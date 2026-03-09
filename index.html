@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MGlobal — Bihar's Web Development Agency</title>
+  <link rel="stylesheet" href="css/global.css"/>
+  <link rel="stylesheet" href="css/nav.css"/>
+  <link rel="stylesheet" href="css/animations.css"/>
+  <link rel="stylesheet" href="css/templates-section.css"/>
+  <style>
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(160deg,#0f0f1a 0%,#1a1a2e 60%,#16213e 100%);
+      color:white; padding:100px 5% 80px;
+      display:flex; align-items:center; gap:60px;
+      min-height:88vh; position:relative; overflow:hidden;
+    }
+    .hero-text { flex:1; max-width:580px; position:relative; z-index:1; }
+    .hero-badge {
+      display:inline-block; background:rgba(255,255,255,.15);
+      border:1px solid rgba(255,255,255,.4); color:#ffffff;
+      padding:6px 16px; border-radius:100px;
+      font-size:.8rem; font-weight:700; letter-spacing:.05em;
+      text-transform:uppercase; margin-bottom:24px;
+      animation: fadeSlideDown .8s ease both;
+    }
+    .hero h1 { font-size:clamp(2.2rem,4vw,3.6rem); font-weight:800; line-height:1.15; margin-bottom:20px; color:#ffffff; animation: fadeSlideDown .8s .15s ease both; }
+    .hero h1 .highlight { color:#f97316; }
+    .hero p { font-size:1.15rem; color:#e2e8f0; line-height:1.7; margin-bottom:36px; max-width:480px; animation: fadeSlideDown .8s .25s ease both; }
+    .hero-btns { display:flex; gap:14px; flex-wrap:wrap; animation: fadeSlideDown .8s .35s ease both; }
+    .hero-btns .btn-outline { color:#ffffff; border-color:rgba(255,255,255,.4); }
+    .hero-btns .btn-outline:hover { border-color:#f97316; color:#f97316; }
+    .hero-visual { flex:1; display:flex; justify-content:center; position:relative; z-index:1; animation: fadeSlideLeft .9s .2s ease both; }
+    /* Floating browser mockup in hero */
+    .hero-browser {
+      background:#1e293b; border-radius:14px; width:100%; max-width:480px;
+      box-shadow:0 30px 80px rgba(0,0,0,.5); overflow:hidden;
+      transition:transform .4s, box-shadow .4s;
+    }
+    .hero-browser:hover { transform:translateY(-6px); box-shadow:0 40px 100px rgba(0,0,0,.6); }
+    .hb-bar { background:#0f172a; padding:10px 16px; display:flex; align-items:center; gap:7px; }
+    .hb-url { flex:1; background:#1e293b; border-radius:5px; padding:3px 10px; color:#64748b; font-size:.7rem; margin-left:8px; }
+    .hb-inner { background:white; }
+    .hb-top { background:linear-gradient(135deg,#1a1a2e,#e05a22); padding:22px 20px; text-align:center; }
+    .hb-top .t { color:white; font-weight:800; font-size:1rem; margin-bottom:4px; }
+    .hb-top .s { color:#fed7aa; font-size:.7rem; margin-bottom:10px; }
+    .hb-btn { background:#f59e0b; color:#1a1a1a; padding:5px 14px; border-radius:6px; font-size:.7rem; font-weight:700; display:inline-block; }
+    .hb-stats { display:flex; justify-content:space-around; padding:14px 10px; }
+    .hb-stat .v { font-size:.95rem; font-weight:800; color:#e05a22; text-align:center; }
+    .hb-stat .l { font-size:.55rem; color:#94a3b8; text-align:center; }
+    .hb-cards { display:flex; gap:8px; padding:10px 14px 14px; background:#f8fafc; }
+    .hb-card { flex:1; background:white; border-radius:7px; padding:9px; border:1px solid #e2e8f0; }
+    .hb-bar2 { height:5px; border-radius:3px; background:#e2e8f0; margin-bottom:5px; }
+    .hb-bar2.b { background:#e05a22; width:70%; }
+    .hb-bar2.s { width:50%; }
+    .hb-ct { font-size:.55rem; font-weight:700; color:#334155; margin-bottom:3px; }
+    .hb-cp { font-size:.5rem; color:#94a3b8; }
+    @media(max-width:900px){ .hero{flex-direction:column;padding:60px 5% 50px;min-height:auto;} }
+  </style>
+</head>
+<body>
+
+<div id="scroll-progress"></div>
+
+<!-- ── NAVIGATION ── -->
+<nav>
+  <a class="logo" href="index.html">M<span>Global</span></a>
+  <ul class="nav-links">
+    <li><a href="#templates">Templates</a></li>
+    <li><a href="#how">Process</a></li>
+    <li><a href="#testimonials">Results</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="pages/book.html" class="nav-book-btn">📅 Book a Call</a>
+    <a href="pages/login.html" id="nav-login-btn">🔐 Login</a>
+    <div id="nav-user-area">
+      <img id="nav-user-photo" src="" alt="User"/>
+      <span id="nav-user-name"></span>
+      <div class="user-dropdown">
+        <a href="pages/dashboard.html">📅 My Appointments</a>
+        <div class="divider"></div>
+        <a href="#" class="sign-out" onclick="signOut()">🚪 Sign Out</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="hero-text">
+    <span class="hero-badge">🌐 Bihar's #1 Web Development Agency</span>
+    <h1>Apna Business <span class="highlight">Online Laao</span> — Bihar Mein</h1>
+    <p>MGlobal banata hai professional websites jo aapke customers attract karein, traffic badhayein, aur sales increase karein. Patna se poore Bihar tak.</p>
+    <div class="hero-btns">
+      <a href="pages/book.html" class="btn btn-primary">📅 Free Consultation Book Karein</a>
+      <a href="#templates" class="btn btn-outline">Templates Dekho →</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-browser">
+      <div class="hb-bar">
+        <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+        <div class="hb-url">mglobal.in/dr-ramesh-clinic-patna</div>
+      </div>
+      <div class="hb-inner">
+        <div class="hb-top">
+          <div class="t">⚕ Dr. Ramesh Kumar Clinic — Boring Road, Patna</div>
+          <div class="s">Trusted healthcare for Bihar families since 2005</div>
+          <span class="hb-btn">Appointment Book Karein →</span>
+        </div>
+        <div class="hb-stats">
+          <div class="hb-stat"><div class="v">+183%</div><div class="l">Bookings Badhein</div></div>
+          <div class="hb-stat"><div class="v">4.9★</div><div class="l">Google Rating</div></div>
+          <div class="hb-stat"><div class="v">+240%</div><div class="l">Web Traffic</div></div>
+        </div>
+        <div class="hb-cards">
+          <div class="hb-card"><div class="hb-ct">Services</div><div class="hb-bar2 b"></div><div class="hb-bar2"></div><div class="hb-cp">General · Fever · BP</div></div>
+          <div class="hb-card"><div class="hb-ct">Online Booking</div><div class="hb-bar2 b s"></div><div class="hb-bar2"></div><div class="hb-cp">Live calendar</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── STATS BAND ── -->
+<div class="stats-band">
+  <div class="stat-item reveal"><div class="num count-up" data-target="250" data-suffix="+">0+</div><div class="lbl">Websites Delivered</div></div>
+  <div class="stat-item reveal"><div class="num count-up" data-target="195" data-prefix="+" data-suffix="%">0%</div><div class="lbl">Avg. Traffic Growth</div></div>
+  <div class="stat-item reveal"><div class="num count-up" data-target="140" data-prefix="+" data-suffix="%">0%</div><div class="lbl">Avg. Sales Growth</div></div>
+  <div class="stat-item reveal"><div class="num count-up" data-target="12">0</div><div class="lbl">Industries Served</div></div>
+  <div class="stat-item reveal"><div class="num count-up" data-target="98" data-suffix="%">0%</div><div class="lbl">Client Satisfaction</div></div>
+</div>
+
+<!-- ── TEMPLATE SHOWCASE ── -->
+<section id="templates">
+  <div class="center reveal">
+    <span class="section-tag">Template Showcase</span>
+    <h2 class="section-title">Bihar ke Har Business ke Liye Website</h2>
+    <p class="section-sub">Har template specifically aapke profession ke liye design kiya gaya hai — Patna aur Bihar ke local customers ko dhyan mein rakh ke.</p>
+  </div>
+
+  <div class="tabs-wrap reveal">
+    <button class="tab-btn active" onclick="showTab('doctor',this)">🩺 Healthcare</button>
+    <button class="tab-btn" onclick="showTab('elec',this)">⚡ Electrician</button>
+    <button class="tab-btn" onclick="showTab('rest',this)">🍽 Restaurant</button>
+    <button class="tab-btn" onclick="showTab('retail',this)">🛍 Retail</button>
+    <button class="tab-btn" onclick="showTab('gym',this)">💪 Gym</button>
+    <button class="tab-btn" onclick="showTab('realty',this)">🏠 Real Estate</button>
+    <button class="tab-btn" onclick="showTab('salon',this)">💅 Salon</button>
+    <button class="tab-btn" onclick="showTab('law',this)">⚖ Law</button>
+  </div>
+
+  <!-- HEALTHCARE -->
+  <div id="tab-doctor" class="category-panel active">
+    <div class="cat-layout">
+      <div class="cat-info reveal-left">
+        <div class="cat-icon" style="background:#eff6ff;">🩺</div>
+        <h3>Healthcare & Medical</h3>
+        <p>Patna ke doctors, clinics, aur hospitals ke liye professional websites. Patients online appointment book kar sakein, services dekh sakein, aur aapko 24/7 contact kar sakein.</p>
+        <div class="results-grid stagger">
+          <div class="result-box"><div class="r-val">+183%</div><div class="r-lbl">Patient Bookings</div></div>
+          <div class="result-box blue"><div class="r-val">+240%</div><div class="r-lbl">Website Traffic</div></div>
+          <div class="result-box blue"><div class="r-val">+92%</div><div class="r-lbl">Naye Patients/Maah</div></div>
+          <div class="result-box"><div class="r-val">4.9★</div><div class="r-lbl">Google Rating</div></div>
+        </div>
+        <div class="cat-actions">
+          <a href="pages/book.html?category=healthcare&business=Healthcare+Clinic" class="template-link" onclick="requireBooking(event)">📅 Apne Clinic ke Liye Book Karein</a>
+          <a href="templates/healthcare.html" target="_blank" class="template-preview-link">👁 Full Preview</a>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <div class="template-preview-wrap">
+          <div class="browser-chrome">
+            <div class="b-dot r"></div><div class="b-dot y"></div><div class="b-dot g"></div>
+            <div class="b-url">dr-ramesh-clinic.mglobal.in</div>
+          </div>
+          <div class="template-iframe-wrap">
+            <iframe data-src="templates/healthcare.html" title="Healthcare Template"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ELECTRICIAN -->
+  <div id="tab-elec" class="category-panel">
+    <div class="cat-layout">
+      <div class="cat-info reveal-left">
+        <div class="cat-icon" style="background:#fffbeb;">⚡</div>
+        <h3>Electricians & Tradespeople</h3>
+        <p>Bihar ke electricians, plumbers, AC technicians ke liye bold websites. Customers ek click mein quote maang sakein ya seedha call kar sakein.</p>
+        <div class="results-grid stagger">
+          <div class="result-box"><div class="r-val">+210%</div><div class="r-lbl">Quote Requests</div></div>
+          <div class="result-box blue"><div class="r-val">+175%</div><div class="r-lbl">Website Traffic</div></div>
+          <div class="result-box blue"><div class="r-val">+88%</div><div class="r-lbl">Calls Per Month</div></div>
+          <div class="result-box"><div class="r-val">3.5×</div><div class="r-lbl">Revenue Growth</div></div>
+        </div>
+        <div class="cat-actions">
+          <a href="pages/book.html?category=electrician&business=Electrical+Services" class="template-link" onclick="requireBooking(event)">📅 Apne Business ke Liye Book Karein</a>
+          <a href="templates/electrician.html" target="_blank" class="template-preview-link">👁 Full Preview</a>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <div class="template-preview-wrap">
+          <div class="browser-chrome">
+            <div class="b-dot r"></div><div class="b-dot y"></div><div class="b-dot g"></div>
+            <div class="b-url">ravi-electricals.mglobal.in</div>
+          </div>
+          <div class="template-iframe-wrap">
+            <iframe data-src="templates/electrician.html" title="Electrician Template"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESTAURANT -->
+  <div id="tab-rest" class="category-panel">
+    <div class="cat-layout">
+      <div class="cat-info reveal-left">
+        <div class="cat-icon" style="background:#fff5f5;">🍽</div>
+        <h3>Restaurants & Dhaba</h3>
+        <p>Patna ke restaurants, dhabas, aur catering ke liye appetizing websites. Menu dikhao, reservations lo, aur online orders accept karo.</p>
+        <div class="results-grid stagger">
+          <div class="result-box"><div class="r-val">+165%</div><div class="r-lbl">Online Orders</div></div>
+          <div class="result-box blue"><div class="r-val">+220%</div><div class="r-lbl">Table Reservations</div></div>
+          <div class="result-box blue"><div class="r-val">+95%</div><div class="r-lbl">Monthly Traffic</div></div>
+          <div class="result-box"><div class="r-val">+78%</div><div class="r-lbl">Revenue Growth</div></div>
+        </div>
+        <div class="cat-actions">
+          <a href="pages/book.html?category=restaurant&business=Restaurant" class="template-link" onclick="requireBooking(event)">📅 Apne Restaurant ke Liye Book Karein</a>
+          <a href="templates/restaurant.html" target="_blank" class="template-preview-link">👁 Full Preview</a>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <div class="template-preview-wrap">
+          <div class="browser-chrome">
+            <div class="b-dot r"></div><div class="b-dot y"></div><div class="b-dot g"></div>
+            <div class="b-url">patna-rasoi.mglobal.in</div>
+          </div>
+          <div class="template-iframe-wrap">
+            <iframe data-src="templates/restaurant.html" title="Restaurant Template"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RETAIL -->
+  <div id="tab-retail" class="category-panel">
+    <div class="cat-layout">
+      <div class="cat-info reveal-left">
+        <div class="cat-icon" style="background:#f5f3ff;">🛍</div>
+        <h3>Retail & E-commerce</h3>
+        <p>Patna ke shops, boutiques, aur retailers ke liye powerful online stores. Products dikhao, orders lo, aur Bihar bhar mein apna business faelao.</p>
+        <div class="results-grid stagger">
+          <div class="result-box"><div class="r-val">+280%</div><div class="r-lbl">Online Sales</div></div>
+          <div class="result-box blue"><div class="r-val">+310%</div><div class="r-lbl">Product Views</div></div>
+          <div class="result-box blue"><div class="r-val">+145%</div><div class="r-lbl">Monthly Visitors</div></div>
+          <div class="result-box"><div class="r-val">4.2×</div><div class="r-lbl">Revenue Growth</div></div>
+        </div>
+        <div class="cat-actions">
+          <a href="pages/book.html?category=retail&business=Retail+Shop" class="template-link" onclick="requireBooking(event)">📅 Apne Shop ke Liye Book Karein</a>
+          <a href="templates/retail.html" target="_blank" class="template-preview-link">👁 Full Preview</a>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <div class="template-preview-wrap">
+          <div class="browser-chrome">
+            <div class="b-dot r"></div><div class="b-dot y"></div><div class="b-dot g"></div>
+            <div class="b-url">maurya-emporium.mglobal.in</div>
+          </div>
+          <div class="template-iframe-wrap">
+            <iframe data-src="templates/retail.html" title="Retail Template"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GYM -->
+  <div id="tab-gym" class="category-panel">
+    <div class="cat-layout">
+      <div class="cat-info reveal-left">
+        <div class="cat-icon" style="background:#f0fdf4;">💪</div>
+        <h3>Gym & Fitness</h3>
+        <p>Patna ke gyms, yoga centers, aur fitness trainers ke liye high-energy websites. Classes dikhao, memberships lo, aur community online banao.</p>
+        <div class="results-grid stagger">
+          <div class="result-box"><div class="r-val">+200%</div><div class="r-lbl">Memberships</div></div>
+          <div class="result-box blue"><div class="r-val">+255%</div><div class="r-lbl">Class Sign-ups</div></div>
+          <div class="result-box blue"><div class="r-val">+130%</div><div class="r-lbl">Monthly Traffic</div></div>
+          <div class="result-box"><div class="r-val">3.8×</div><div class="r-lbl">Revenue Growth</div></div>
+        </div>
+        <div class="cat-actions">
+          <a href="pages/book.html?category=gym&business=Fitness+Centre" class="template-link" onclick="requireBooking(event)">📅 Apne Gym ke Liye Book Karein</a>
+          <a href="templates/gym.html" target="_blank" class="template-preview-link">👁 Full Preview</a>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <div class="template-preview-wrap">
+          <div class="browser-chrome">
+            <div class="b-dot r"></div><div class="b-dot y"></div><div class="b-dot g"></div>
+            <div class="b-url">chandragupta-fitness.mglobal.in</div>
+          </div>
+          <div class="template-iframe-wrap">
+            <iframe data-src="templates/gym.html" title="Gym Template"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REAL ESTATE -->
+  <div id="tab-realty" class="category-panel">
+    <div class="cat-layout">
+      <div class="cat-info reveal-left">
+        <div class="cat-icon" style="background:#ecfdf5;">🏠</div>
+        <h3>Real Estate</h3>
+        <p>Bihar ke property dealers, agents, aur builders ke liye professional websites. Listings dikhao, buyers capture karo, aur viewings book karo.</p>
+        <div class="results-grid stagger">
+          <div class="result-box"><div class="r-val">+190%</div><div class="r-lbl">Enquiries</div></div>
+          <div class="result-box blue"><div class="r-val">+270%</div><div class="r-lbl">Listing Views</div></div>
+          <div class="result-box blue"><div class="r-val">+115%</div><div class="r-lbl">Monthly Traffic</div></div>
+          <div class="result-box"><div class="r-val">+65%</div><div class="r-lbl">Properties Sold</div></div>
+        </div>
+        <div class="cat-actions">
+          <a href="pages/book.html?category=realestate&business=Property+Agency" class="template-link" onclick="requireBooking(event)">📅 Apne Agency ke Liye Book Karein</a>
+          <a href="templates/realestate.html" target="_blank" class="template-preview-link">👁 Full Preview</a>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <div class="template-preview-wrap">
+          <div class="browser-chrome">
+            <div class="b-dot r"></div><div class="b-dot y"></div><div class="b-dot g"></div>
+            <div class="b-url">bihar-griha-properties.mglobal.in</div>
+          </div>
+          <div class="template-iframe-wrap">
+            <iframe data-src="templates/realestate.html" title="Real Estate Template"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SALON -->
+  <div id="tab-salon" class="category-panel">
+    <div class="cat-layout">
+      <div class="cat-info reveal-left">
+        <div class="cat-icon" style="background:#fff0f6;">💅</div>
+        <h3>Salon & Beauty Parlour</h3>
+        <p>Patna ke salons, beauty parlours, aur spas ke liye elegant websites. Portfolio dikhao, appointments lo, aur online booking se 24/7 customers aao.</p>
+        <div class="results-grid stagger">
+          <div class="result-box"><div class="r-val">+175%</div><div class="r-lbl">Appointments</div></div>
+          <div class="result-box blue"><div class="r-val">+230%</div><div class="r-lbl">Portfolio Views</div></div>
+          <div class="result-box blue"><div class="r-val">+120%</div><div class="r-lbl">Monthly Traffic</div></div>
+          <div class="result-box"><div class="r-val">+90%</div><div class="r-lbl">Revenue Growth</div></div>
+        </div>
+        <div class="cat-actions">
+          <a href="pages/book.html?category=salon&business=Salon+Beauty" class="template-link" onclick="requireBooking(event)">📅 Apne Salon ke Liye Book Karein</a>
+          <a href="templates/salon.html" target="_blank" class="template-preview-link">👁 Full Preview</a>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <div class="template-preview-wrap">
+          <div class="browser-chrome">
+            <div class="b-dot r"></div><div class="b-dot y"></div><div class="b-dot g"></div>
+            <div class="b-url">shringar-parlour.mglobal.in</div>
+          </div>
+          <div class="template-iframe-wrap">
+            <iframe data-src="templates/salon.html" title="Salon Template"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LAW -->
+  <div id="tab-law" class="category-panel">
+    <div class="cat-layout">
+      <div class="cat-info reveal-left">
+        <div class="cat-icon" style="background:#fafaf9;">⚖</div>
+        <h3>Law Firms & Advocates</h3>
+        <p>Patna High Court ke advocates aur law firms ke liye authoritative websites. Expertise dikhao, clients capture karo, aur free consultation offer karo.</p>
+        <div class="results-grid stagger">
+          <div class="result-box"><div class="r-val">+160%</div><div class="r-lbl">Consultations</div></div>
+          <div class="result-box blue"><div class="r-val">+195%</div><div class="r-lbl">Case Enquiries</div></div>
+          <div class="result-box blue"><div class="r-val">+140%</div><div class="r-lbl">Monthly Traffic</div></div>
+          <div class="result-box"><div class="r-val">2.9×</div><div class="r-lbl">Client Growth</div></div>
+        </div>
+        <div class="cat-actions">
+          <a href="pages/book.html?category=law&business=Law+Firm" class="template-link" onclick="requireBooking(event)">📅 Apne Firm ke Liye Book Karein</a>
+          <a href="templates/law.html" target="_blank" class="template-preview-link">👁 Full Preview</a>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <div class="template-preview-wrap">
+          <div class="browser-chrome">
+            <div class="b-dot r"></div><div class="b-dot y"></div><div class="b-dot g"></div>
+            <div class="b-url">sharma-associates.mglobal.in</div>
+          </div>
+          <div class="template-iframe-wrap">
+            <iframe data-src="templates/law.html" title="Law Template"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── HOW IT WORKS ── -->
+<section class="how-section" id="how">
+  <div class="center reveal">
+    <span class="section-tag" style="background:rgba(255,255,255,.18);color:#ffffff;">Hamara Process</span>
+    <h2 class="section-title">Idea Se Live Website — Sirf Kuch Dino Mein</h2>
+    <p class="section-sub">Hamne apna process simple aur stress-free banaya hai.</p>
+  </div>
+  <div class="steps stagger reveal">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h4>Free Consultation</h4>
+      <p>Aapke goals aur vision ke baare mein baat karte hain. Koi pressure nahi, koi jargon nahi.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h4>Custom Design</h4>
+      <p>Aapke brand aur industry ke liye tailored mockup ready karte hain.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h4>Build & Revise</h4>
+      <p>Website banate hain, aur aapka feedback leke unlimited revisions karte hain.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <h4>Launch & Grow</h4>
+      <p>Live karte hain, technical setup karte hain, aur ongoing support dete hain.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section id="testimonials" style="background:var(--light-bg);">
+  <div class="center reveal">
+    <span class="section-tag">Client Results</span>
+    <h2 class="section-title">Bihar ke Businesses — Real Growth</h2>
+    <p class="section-sub">Humara kaam bolega. Yeh hain hamare Bihar ke clients ki kahani.</p>
+  </div>
+  <div class="testimonials-grid stagger reveal">
+    <div class="tcard">
+      <div class="stars">★★★★★</div>
+      <p>"Website launch hone ke 3 mahine mein patient bookings double ho gayin. MGlobal ne samjha ki ek medical practice ke liye kya zaroori hai — clean, professional, aur trustworthy."</p>
+      <div class="author">
+        <div class="avatar" style="background:#1a73e8;">RK</div>
+        <div class="author-info">
+          <div class="name">Dr. Ramesh Kumar</div>
+          <div class="role">City Medical Clinic · Boring Road, Patna</div>
+        </div>
+      </div>
+    </div>
+    <div class="tcard">
+      <div class="stars">★★★★★</div>
+      <p>"Pehle sirf munh-zubaani kaam aata tha. Ab website se 10–15 quote requests har hafte aate hain. MGlobal mein invest karna sabse accha faisla tha."</p>
+      <div class="author">
+        <div class="avatar" style="background:#f59e0b;">RS</div>
+        <div class="author-info">
+          <div class="name">Ravi Shankar</div>
+          <div class="role">Ravi Electricals · Kankarbagh, Patna</div>
+        </div>
+      </div>
+    </div>
+    <div class="tcard">
+      <div class="stars">★★★★★</div>
+      <p>"Online orders 2 mahine mein 165% badh gaye. MGlobal ne poora process seamless bana diya — design se le ke live hone tak ek hafte mein."</p>
+      <div class="author">
+        <div class="avatar" style="background:#dc2626;">MP</div>
+        <div class="author-info">
+          <div class="name">Mithilesh Prasad</div>
+          <div class="role">Patna Rasoi · Bailey Road, Patna</div>
+        </div>
+      </div>
+    </div>
+    <div class="tcard">
+      <div class="stars">★★★★★</div>
+      <p>"Hamari dukaan ka online presence finally waise dikh raha hai jaisa hum chahte the. Website se ab 40% revenue aata hai. Incredible kaam kiya MGlobal ne."</p>
+      <div class="author">
+        <div class="avatar" style="background:#7c3aed;">SK</div>
+        <div class="author-info">
+          <div class="name">Sunita Kumari</div>
+          <div class="role">Maurya Emporium · Patna City</div>
+        </div>
+      </div>
+    </div>
+    <div class="tcard">
+      <div class="stars">★★★★★</div>
+      <p>"Gym memberships 200% badh gayin website launch ke baad. Online booking system ne hamare ghanton ki admin work bhi bachai. Bahut khush hain."</p>
+      <div class="author">
+        <div class="avatar" style="background:#16a34a;">AS</div>
+        <div class="author-info">
+          <div class="name">Ajay Singh</div>
+          <div class="role">Chandragupta Fitness · Fraser Road, Patna</div>
+        </div>
+      </div>
+    </div>
+    <div class="tcard">
+      <div class="stars">★★★★★</div>
+      <p>"Pehle teenmahine mein consultation requests 160% badh gayin. MGlobal ne aisi website banayi jo authority aur trust communicate kare — bilkul waisa jo ek law firm chahta hai."</p>
+      <div class="author">
+        <div class="avatar" style="background:#44403c;">VS</div>
+        <div class="author-info">
+          <div class="name">Adv. Vikram Sharma</div>
+          <div class="role">Sharma & Associates · Patna High Court</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="cta-section" id="contact">
+  <div class="reveal">
+    <span class="section-tag" style="background:rgba(255,255,255,.2);color:#ffffff;">Free Consultation</span>
+    <h2>Apna Business Online Laane ke Liye Ready Hain?</h2>
+    <p>Free consultation book karein — koi commitment nahi, koi payment nahi. Sirf ek friendly conversation.</p>
+    <div style="margin-top:8px;">
+      <a href="pages/book.html" class="btn btn-white" style="font-size:1rem;padding:15px 32px;">
+        📅 Free Consultation Book Karein
+      </a>
+    </div>
+    <p class="cta-note" style="margin-top:20px;">Ya seedha call karein: <strong style="color:white;">+91 0612-XXX-XXXX</strong> · Patna, Bihar</p>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a class="logo" href="index.html">M<span style="color:#94a3b8;">Global</span></a>
+      <p>Bihar ka professional web development agency. Hum banate hain websites jo kaam karti hain — Patna se poore Bihar tak.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Industries</h5>
+      <ul>
+        <li><a href="templates/healthcare.html" target="_blank">🩺 Healthcare</a></li>
+        <li><a href="templates/electrician.html" target="_blank">⚡ Electricians</a></li>
+        <li><a href="templates/restaurant.html" target="_blank">🍽 Restaurants</a></li>
+        <li><a href="templates/retail.html" target="_blank">🛍 Retail</a></li>
+        <li><a href="templates/gym.html" target="_blank">💪 Gym</a></li>
+        <li><a href="templates/law.html" target="_blank">⚖ Law Firms</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Quick Links</h5>
+      <ul>
+        <li><a href="#templates">Templates</a></li>
+        <li><a href="#how">Our Process</a></li>
+        <li><a href="#testimonials">Results</a></li>
+        <li><a href="pages/book.html">Book Consultation</a></li>
+        <li><a href="pages/dashboard.html">My Appointments</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="#">📧 hello@mglobal.in</a></li>
+        <li><a href="#">📞 +91 0612-XXX-XXXX</a></li>
+        <li><a href="#">📍 Patna, Bihar — 800001</a></li>
+        <li><a href="pages/book.html">Free Consultation</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 MGlobal · Patna, Bihar. All rights reserved.</span>
+    <span>Privacy Policy · Terms of Service</span>
+  </div>
+</footer>
+
+<button id="back-to-top" title="Back to top">↑</button>
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/animations.js"></script>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.category-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    btn.classList.add('active');
+    // Trigger reveal for newly shown panel elements
+    setTimeout(() => {
+      document.querySelectorAll('#tab-' + id + ' .reveal, #tab-' + id + ' .reveal-left, #tab-' + id + ' .reveal-right').forEach(el => el.classList.add('visible'));
+    }, 50);
+  }
+
+  // Gate booking behind login
+  function requireBooking(e) {
+    const user = auth.currentUser;
+    if (!user) {
+      e.preventDefault();
+      const dest = e.currentTarget.href;
+      localStorage.setItem('mglobal_redirect', dest);
+      window.location.href = 'pages/login.html';
+    }
+  }
+
+  // Mark initial tab reveals as visible
+  window.addEventListener('load', () => {
+    document.querySelectorAll('#tab-doctor .reveal, #tab-doctor .reveal-left, #tab-doctor .reveal-right').forEach(el => {
+      setTimeout(() => el.classList.add('visible'), 200);
+    });
+  });
+</script>
+</body>
+</html>

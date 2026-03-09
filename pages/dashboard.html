@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Requests — MGlobal</title>
+  <link rel="stylesheet" href="../css/global.css"/>
+  <link rel="stylesheet" href="../css/nav.css"/>
+  <link rel="stylesheet" href="../css/appointments.css"/>
+  <link rel="stylesheet" href="../css/animations.css"/>
+</head>
+<body class="dashboard-page">
+
+<div id="scroll-progress"></div>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="../index.html">M<span>Global</span></a>
+  <ul class="nav-links">
+    <li><a href="../index.html#templates">Templates</a></li>
+    <li><a href="../index.html#how">How It Works</a></li>
+    <li><a href="book.html">Free Consultation</a></li>
+  </ul>
+  <div class="nav-right">
+    <div id="nav-user-area">
+      <img id="nav-user-photo" src="" alt="User"/>
+      <span id="nav-user-name"></span>
+      <div class="user-dropdown">
+        <a href="dashboard.html">📅 My Requests</a>
+        <div class="divider"></div>
+        <a href="#" class="sign-out" onclick="signOut()">🚪 Sign Out</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- DASHBOARD BODY -->
+<div class="dashboard-container">
+
+  <!-- Header -->
+  <div class="dashboard-header reveal">
+    <div class="dashboard-header-left">
+      <img id="dashboard-user-photo" src="" alt="User"/>
+      <div>
+        <div id="dashboard-user-name">Loading...</div>
+        <div style="font-size:.85rem;color:var(--muted);">Aapki saari website consultation requests yahan hain</div>
+      </div>
+    </div>
+    <a href="book.html" class="btn btn-primary">+ New Request</a>
+  </div>
+
+  <!-- Summary Stats -->
+  <div class="dash-stats stagger reveal">
+    <div class="dash-stat-card">
+      <div class="d-num" id="stat-total" style="color:var(--primary);">—</div>
+      <div class="d-lbl">Total Requests</div>
+    </div>
+    <div class="dash-stat-card">
+      <div class="d-num" id="stat-pending" style="color:var(--amber);">—</div>
+      <div class="d-lbl">Pending</div>
+    </div>
+    <div class="dash-stat-card">
+      <div class="d-num" id="stat-confirmed" style="color:var(--primary);">—</div>
+      <div class="d-lbl">Confirmed</div>
+    </div>
+    <div class="dash-stat-card">
+      <div class="d-num" id="stat-completed" style="color:var(--green);">—</div>
+      <div class="d-lbl">Completed</div>
+    </div>
+  </div>
+
+  <!-- Filter Bar -->
+  <div class="filter-bar reveal">
+    <button class="filter-btn active" onclick="filterByStatus('all')">All</button>
+    <button class="filter-btn" onclick="filterByStatus('pending')">🕐 Pending</button>
+    <button class="filter-btn" onclick="filterByStatus('confirmed')">✅ Confirmed</button>
+    <button class="filter-btn" onclick="filterByStatus('completed')">🎉 Completed</button>
+    <button class="filter-btn" onclick="filterByStatus('cancelled')">❌ Cancelled</button>
+  </div>
+
+  <!-- Loading -->
+  <div id="loading-state">⏳ Requests load ho rahi hain...</div>
+
+  <!-- Empty State -->
+  <div id="empty-state">
+    <div class="empty-icon">📭</div>
+    <h3>Koi request nahi mili</h3>
+    <p>Abhi tak koi consultation request nahi bheji hai. Neeche button se free consultation book karein!</p>
+    <a href="book.html" class="btn btn-primary">Book Free Consultation</a>
+  </div>
+
+  <!-- Appointments Grid -->
+  <div id="appointments-grid"></div>
+
+</div>
+
+<!-- Footer -->
+<footer style="margin-top:auto;">
+  <div style="text-align:center;color:#64748b;font-size:.82rem;padding:20px 0;">
+    © 2026 MGlobal · Patna, Bihar · <a href="../index.html" style="color:var(--primary);">Go to Home</a>
+  </div>
+</footer>
+
+<button id="back-to-top" title="Back to top">↑</button>
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="../js/firebase-config.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/dashboard.js"></script>
+<script src="../js/animations.js"></script>
+</body>
+</html>

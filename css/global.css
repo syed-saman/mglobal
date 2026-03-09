@@ -1,0 +1,131 @@
+/* ================================================================
+   MGlobal — Global Variables, Reset & Typography
+   ================================================================ */
+
+:root {
+  --primary:       #e05a22;   /* Vibrant orange — energetic, warm */
+  --primary-dark:  #c0421a;   /* Deeper orange for hover */
+  --primary-light: #fff3ee;   /* Soft warm tint for bg */
+  --dark:          #1a1a2e;   /* Deep charcoal navy — Odin-style */
+  --mid:           #16213e;   /* Slightly lighter dark for cards */
+  --light-bg:      #f8f9fa;   /* Clean off-white */
+  --border:        #e2e8f0;   /* Light gray borders */
+  --text:          #1a1a2e;   /* Same as dark — sharp body text */
+  --muted:         #64748b;   /* Medium gray secondary text */
+  --white:         #ffffff;
+  --green:         #16a34a;
+  --green-bg:      #f0fdf4;
+  --amber:         #f59e0b;
+  --red:           #dc2626;
+  --radius:        12px;
+  --shadow-sm:     0 2px 8px rgba(0,0,0,.06);
+  --shadow-md:     0 8px 24px rgba(0,0,0,.1);
+  --shadow-lg:     0 20px 60px rgba(0,0,0,.15);
+  --transition:    all .25s ease;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  color: var(--text);
+  background: var(--white);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* ── SCROLL PROGRESS BAR ── */
+#scroll-progress {
+  position: fixed; top: 0; left: 0;
+  height: 3px; width: 0%;
+  background: linear-gradient(90deg, var(--primary), #f97316);
+  z-index: 9999;
+  transition: width .1s linear;
+}
+
+/* ── TYPOGRAPHY ── */
+h1, h2, h3, h4, h5 { line-height: 1.2; color: var(--dark); }
+p { line-height: 1.7; }
+a { color: var(--primary); }
+
+/* ── UTILITY ── */
+.center { text-align: center; }
+.center .section-sub { margin: 0 auto; }
+
+.section-tag {
+  display: inline-block;
+  background: #fff3ee; color: #c0421a;
+  padding: 4px 14px; border-radius: 100px;
+  font-size: .78rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .06em;
+  margin-bottom: 12px;
+}
+h2.section-title {
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 800; margin-bottom: 12px;
+}
+.section-sub {
+  color: var(--muted); font-size: 1.05rem;
+  max-width: 560px; line-height: 1.65;
+}
+
+section { padding: 80px 5%; }
+
+/* ── BUTTONS ── */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 8px; padding: 12px 24px; border-radius: 8px;
+  font-weight: 600; font-size: .95rem; cursor: pointer;
+  text-decoration: none; border: none; transition: var(--transition);
+}
+.btn-primary {
+  background: var(--primary); color: white;
+  box-shadow: 0 4px 14px rgba(224,90,34,.35);
+}
+.btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(224,90,34,.45); }
+.btn-outline {
+  border: 2px solid var(--border); color: var(--text); background: transparent;
+}
+.btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+.btn-white {
+  background: white; color: var(--primary);
+  box-shadow: 0 4px 14px rgba(0,0,0,.12);
+}
+.btn-white:hover { background: var(--primary-light); transform: translateY(-2px); }
+
+/* ── BACK TO TOP ── */
+#back-to-top {
+  position: fixed; bottom: 28px; right: 28px;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--primary); color: white;
+  border: none; cursor: pointer; font-size: 1rem;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 14px rgba(224,90,34,.4);
+  opacity: 0; pointer-events: none;
+  transition: opacity .3s, transform .3s;
+  z-index: 500;
+}
+#back-to-top.visible { opacity: 1; pointer-events: all; }
+#back-to-top:hover { transform: translateY(-3px); }
+
+/* ── FORM SHARED STYLES ── */
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group label { font-weight: 600; font-size: .88rem; color: var(--text); }
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 12px 14px; border-radius: 8px;
+  border: 1.5px solid var(--border); font-size: .95rem;
+  color: var(--text); background: white; outline: none;
+  transition: border-color .2s, box-shadow .2s;
+  font-family: inherit;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(224,90,34,.15);
+}
+.form-group textarea { resize: vertical; min-height: 90px; }
+.form-group .hint { font-size: .75rem; color: var(--muted); }
+.required-star { color: var(--red); margin-left: 2px; }

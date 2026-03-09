@@ -1,0 +1,198 @@
+/* ================================================================
+   MGlobal — Appointment Booking & Dashboard Styles
+   ================================================================ */
+
+/* ── BOOKING PAGE WRAPPER ── */
+.book-page {
+  min-height: 100vh; background: var(--light-bg);
+  display: flex; flex-direction: column;
+}
+.book-container {
+  flex: 1; max-width: 720px; width: 100%;
+  margin: 40px auto; padding: 0 20px 60px;
+}
+.book-header { text-align: center; margin-bottom: 36px; }
+.book-header h1 { font-size: 1.9rem; font-weight: 800; margin-bottom: 8px; }
+.book-header p  { color: var(--muted); }
+.book-header .business-tag {
+  display: inline-block; margin-top: 10px;
+  background: var(--primary-light); color: var(--primary);
+  padding: 4px 14px; border-radius: 100px;
+  font-size: .82rem; font-weight: 700;
+}
+
+/* ── BOOKING FORM CARD ── */
+.book-card {
+  background: white; border-radius: 18px;
+  padding: 36px; border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+.book-card .form-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+}
+.book-card .form-grid .full-width { grid-column: 1 / -1; }
+
+/* ── SECTION DIVIDER IN FORM ── */
+.form-section-title {
+  font-size: .8rem; font-weight: 700; color: var(--muted);
+  text-transform: uppercase; letter-spacing: .06em;
+  margin: 8px 0 4px; grid-column: 1 / -1;
+  padding-bottom: 8px; border-bottom: 1px solid var(--border);
+}
+
+/* ── SUBMIT BUTTON ── */
+#submit-btn {
+  width: 100%; padding: 15px; font-size: 1rem; font-weight: 700;
+  background: var(--primary); color: white; border: none;
+  border-radius: 10px; cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 4px 14px rgba(26,115,232,.35);
+  margin-top: 8px;
+}
+#submit-btn:hover:not(:disabled) { background: var(--primary-dark); transform: translateY(-2px); }
+#submit-btn:disabled { opacity: .65; cursor: not-allowed; }
+
+/* ── ERROR MESSAGE ── */
+#form-error {
+  display: none; background: #fef2f2; color: var(--red);
+  border: 1px solid #fecaca; border-radius: 8px;
+  padding: 12px 16px; font-size: .88rem; margin-top: 12px;
+}
+
+/* ── SUCCESS SCREEN ── */
+#booking-success {
+  display: none; text-align: center; padding: 20px 0;
+  animation: successPop .4s ease;
+}
+#booking-success .success-icon { font-size: 3.5rem; margin-bottom: 16px; }
+#booking-success h2 { font-size: 1.6rem; font-weight: 800; margin-bottom: 10px; }
+#booking-success p  { color: var(--muted); margin-bottom: 6px; }
+#booking-success .booking-id-box {
+  display: inline-block; margin: 16px auto;
+  background: var(--primary-light); color: var(--primary);
+  padding: 10px 24px; border-radius: 10px;
+  font-size: 1.2rem; font-weight: 800; letter-spacing: .08em;
+}
+#booking-success .success-note {
+  background: var(--green-bg); color: var(--green);
+  border-radius: 8px; padding: 12px 16px;
+  font-size: .88rem; margin-top: 16px; text-align: left;
+  line-height: 1.6;
+}
+
+/* ── LOGIN GATE (shown on book.html if not logged in) ── */
+.login-gate {
+  text-align: center; padding: 48px 20px;
+  animation: fadeSlideDown .5s ease;
+}
+.login-gate .gate-icon { font-size: 3rem; margin-bottom: 16px; }
+.login-gate h2 { font-size: 1.5rem; font-weight: 800; margin-bottom: 8px; }
+.login-gate p { color: var(--muted); margin-bottom: 24px; }
+
+/* ── DASHBOARD ── */
+.dashboard-page { min-height: 100vh; background: var(--light-bg); }
+.dashboard-container { max-width: 1100px; margin: 0 auto; padding: 40px 5% 80px; }
+
+.dashboard-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 32px; flex-wrap: wrap; gap: 16px;
+}
+.dashboard-header-left { display: flex; align-items: center; gap: 14px; }
+#dashboard-user-photo {
+  width: 50px; height: 50px; border-radius: 50%;
+  border: 3px solid var(--primary); object-fit: cover;
+}
+#dashboard-user-name { font-size: 1.3rem; font-weight: 800; }
+
+/* ── SUMMARY STATS ── */
+.dash-stats {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 16px; margin-bottom: 32px;
+}
+.dash-stat-card {
+  background: white; border-radius: 14px; padding: 20px;
+  border: 1px solid var(--border); text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: transform .25s;
+}
+.dash-stat-card:hover { transform: translateY(-3px); }
+.dash-stat-card .d-num { font-size: 2rem; font-weight: 800; }
+.dash-stat-card .d-lbl { font-size: .8rem; color: var(--muted); margin-top: 4px; }
+
+/* ── FILTER BUTTONS ── */
+.filter-bar { display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; }
+.filter-btn {
+  padding: 8px 18px; border-radius: 100px;
+  border: 1.5px solid var(--border); background: white;
+  font-size: .85rem; font-weight: 600; cursor: pointer;
+  color: var(--text); transition: var(--transition);
+}
+.filter-btn:hover, .filter-btn.active {
+  border-color: var(--primary); background: var(--primary); color: white;
+}
+
+/* ── APPOINTMENT CARDS ── */
+#appointments-grid { display: flex; flex-direction: column; gap: 16px; }
+
+.apt-card {
+  background: white; border-radius: 14px; padding: 22px;
+  border: 1px solid var(--border); box-shadow: var(--shadow-sm);
+  transition: transform .25s, box-shadow .25s;
+}
+.apt-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
+.apt-card-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 12px;
+}
+.apt-status-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 12px; border-radius: 100px;
+  font-size: .8rem; font-weight: 700;
+}
+.apt-booking-id { font-size: .8rem; color: var(--muted); font-family: monospace; }
+
+.apt-card-body { margin-bottom: 14px; }
+.apt-service { font-size: 1.1rem; font-weight: 700; margin-bottom: 2px; }
+.apt-business { font-size: .88rem; color: var(--muted); margin-bottom: 8px; }
+.apt-meta { display: flex; gap: 16px; font-size: .85rem; color: var(--text); }
+.apt-notes { font-size: .82rem; color: var(--muted); margin-top: 6px; }
+
+.apt-card-footer {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 12px; border-top: 1px solid var(--border);
+}
+.apt-category-tag {
+  font-size: .78rem; font-weight: 600; color: var(--primary);
+  background: var(--primary-light); padding: 3px 10px; border-radius: 100px;
+}
+.apt-cancel-btn {
+  padding: 6px 14px; border-radius: 7px;
+  border: 1.5px solid var(--red); color: var(--red);
+  background: transparent; font-size: .82rem; font-weight: 600;
+  cursor: pointer; transition: var(--transition);
+}
+.apt-cancel-btn:hover:not(:disabled) { background: var(--red); color: white; }
+.apt-cancel-btn:disabled { opacity: .4; cursor: not-allowed; border-color: var(--border); color: var(--muted); }
+
+/* ── EMPTY STATE ── */
+#empty-state {
+  display: none; text-align: center; padding: 60px 20px;
+  background: white; border-radius: 16px; border: 1px dashed var(--border);
+}
+#empty-state .empty-icon { font-size: 3rem; margin-bottom: 12px; }
+#empty-state h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; }
+#empty-state p { color: var(--muted); margin-bottom: 20px; }
+
+/* ── LOADING STATE ── */
+#loading-state {
+  display: none; text-align: center; padding: 40px;
+  color: var(--muted); font-size: .95rem;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 640px) {
+  .book-card .form-grid { grid-template-columns: 1fr; }
+  .dash-stats { grid-template-columns: 1fr 1fr; }
+  .dashboard-header { flex-direction: column; align-items: flex-start; }
+}

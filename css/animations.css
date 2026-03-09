@@ -1,0 +1,108 @@
+/* ================================================================
+   MGlobal — Scroll Animations & Transitions
+   ================================================================ */
+
+/* ── REVEAL BASE STATES (hidden) ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.reveal-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.reveal-fade {
+  opacity: 0;
+  transition: opacity .8s ease;
+}
+
+/* ── VISIBLE STATE (JS adds .visible) ── */
+.reveal.visible,
+.reveal-left.visible,
+.reveal-right.visible,
+.reveal-scale.visible,
+.reveal-fade.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── STAGGER DELAYS ── */
+.stagger > *:nth-child(1) { transition-delay: .05s; }
+.stagger > *:nth-child(2) { transition-delay: .15s; }
+.stagger > *:nth-child(3) { transition-delay: .25s; }
+.stagger > *:nth-child(4) { transition-delay: .35s; }
+.stagger > *:nth-child(5) { transition-delay: .45s; }
+.stagger > *:nth-child(6) { transition-delay: .55s; }
+
+/* ── HERO ENTRY ANIMATIONS ── */
+@keyframes fadeSlideDown {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeSlideLeft {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes floatOrb {
+  0%, 100% { transform: translate(0, 0); }
+  50%       { transform: translate(16px, -16px); }
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(26,115,232,.35); }
+  50%       { box-shadow: 0 0 0 12px rgba(26,115,232,0); }
+}
+@keyframes successPop {
+  from { opacity: 0; transform: scale(.88); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ── PANEL TRANSITION (tab switch) ── */
+@keyframes panelFade {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── LOADING SKELETON ── */
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 6px;
+}
+
+/* ── FLOATING ORB BG ELEMENTS ── */
+.orb {
+  position: absolute; border-radius: 50%; pointer-events: none;
+  animation: floatOrb 8s ease-in-out infinite;
+}
+.orb-1 {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(224,90,34,.2) 0%, transparent 70%);
+  top: -120px; right: -100px;
+}
+.orb-2 {
+  width: 340px; height: 340px;
+  background: radial-gradient(circle, rgba(249,115,22,.12) 0%, transparent 70%);
+  bottom: -80px; left: 5%;
+  animation-delay: -3s;
+}

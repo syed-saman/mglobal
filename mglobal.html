@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MGlobal — Web Development for Every Business</title>
+  <style>
+    :root {
+      --primary: #1a73e8;
+      --primary-dark: #1558b0;
+      --accent: #0d47a1;
+      --dark: #0f172a;
+      --mid: #1e293b;
+      --light-bg: #f8fafc;
+      --border: #e2e8f0;
+      --text: #334155;
+      --muted: #64748b;
+      --white: #ffffff;
+      --green: #16a34a;
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; color: var(--text); background: var(--white); }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.97);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(8px);
+      padding: 0 5%;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px;
+    }
+    .logo { font-size: 1.6rem; font-weight: 800; color: var(--primary); letter-spacing: -1px; }
+    .logo span { color: var(--dark); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--text); font-weight: 500; font-size: .95rem; transition: color .2s; }
+    .nav-links a:hover { color: var(--primary); }
+    .nav-cta {
+      background: var(--primary); color: var(--white);
+      padding: 10px 22px; border-radius: 8px; text-decoration: none;
+      font-weight: 600; font-size: .9rem; transition: background .2s;
+    }
+    .nav-cta:hover { background: var(--primary-dark); }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, #0f172a 0%, #1a2744 60%, #1a3a6e 100%);
+      color: var(--white); padding: 100px 5% 80px;
+      display: flex; align-items: center; gap: 60px;
+      min-height: 88vh;
+    }
+    .hero-text { flex: 1; max-width: 580px; }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(26,115,232,.25); border: 1px solid rgba(26,115,232,.5);
+      color: #93c5fd; padding: 6px 16px; border-radius: 100px;
+      font-size: .8rem; font-weight: 600; letter-spacing: .05em;
+      margin-bottom: 24px; text-transform: uppercase;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 4vw, 3.6rem);
+      font-weight: 800; line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .hero h1 .highlight { color: #60a5fa; }
+    .hero p {
+      font-size: 1.15rem; color: #94a3b8;
+      line-height: 1.7; margin-bottom: 36px; max-width: 480px;
+    }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--primary); color: white;
+      padding: 14px 30px; border-radius: 8px; text-decoration: none;
+      font-weight: 700; font-size: 1rem; transition: all .2s;
+      box-shadow: 0 4px 20px rgba(26,115,232,.4);
+    }
+    .btn-primary:hover { background: #2563eb; transform: translateY(-2px); }
+    .btn-outline {
+      border: 2px solid rgba(255,255,255,.3); color: white;
+      padding: 14px 30px; border-radius: 8px; text-decoration: none;
+      font-weight: 600; font-size: 1rem; transition: all .2s;
+    }
+    .btn-outline:hover { border-color: white; background: rgba(255,255,255,.08); }
+    .hero-visual { flex: 1; display: flex; justify-content: center; }
+    .browser-mock {
+      background: #1e293b; border-radius: 14px;
+      width: 100%; max-width: 500px;
+      box-shadow: 0 30px 80px rgba(0,0,0,.5);
+      overflow: hidden;
+    }
+    .browser-bar {
+      background: #0f172a; padding: 10px 16px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .dot { width: 12px; height: 12px; border-radius: 50%; }
+    .dot.r { background: #ef4444; } .dot.y { background: #f59e0b; } .dot.g { background: #22c55e; }
+    .url-bar {
+      flex: 1; background: #1e293b; border-radius: 6px;
+      padding: 4px 12px; color: #94a3b8; font-size: .75rem; margin-left: 8px;
+    }
+    .browser-content { padding: 0; }
+    /* Mini hero website mock */
+    .mock-site-hero {
+      background: linear-gradient(135deg, #1e3a5f, #2563eb);
+      padding: 28px 24px 20px; text-align: center;
+    }
+    .mock-site-hero .m-logo { color: white; font-weight: 800; font-size: 1.1rem; margin-bottom: 10px; }
+    .mock-site-hero h3 { color: white; font-size: 1rem; margin-bottom: 6px; }
+    .mock-site-hero p { color: #bfdbfe; font-size: .7rem; margin-bottom: 12px; }
+    .mock-btn { background: #f59e0b; color: #1a1a1a; padding: 6px 16px; border-radius: 6px; font-size: .72rem; font-weight: 700; display: inline-block; }
+    .mock-stats-row {
+      display: flex; justify-content: space-around;
+      padding: 16px; background: white;
+    }
+    .mock-stat { text-align: center; }
+    .mock-stat .val { font-size: 1rem; font-weight: 800; color: var(--primary); }
+    .mock-stat .lbl { font-size: .6rem; color: #64748b; }
+    .mock-cards { display: flex; gap: 8px; padding: 12px 16px 16px; background: #f8fafc; }
+    .mock-card { flex: 1; background: white; border-radius: 8px; padding: 10px; border: 1px solid #e2e8f0; }
+    .mock-card .mc-bar { height: 6px; border-radius: 3px; background: #e2e8f0; margin-bottom: 6px; }
+    .mock-card .mc-bar.blue { background: #3b82f6; width: 70%; }
+    .mock-card .mc-bar.short { width: 50%; }
+    .mock-card .mc-t { font-size: .6rem; font-weight: 700; color: #334155; margin-bottom: 4px; }
+    .mock-card .mc-p { font-size: .55rem; color: #94a3b8; }
+
+    /* ── STATS BAND ── */
+    .stats-band {
+      background: var(--primary); color: white;
+      display: flex; justify-content: space-around; flex-wrap: wrap;
+      padding: 40px 5%; gap: 20px;
+    }
+    .stat-item { text-align: center; }
+    .stat-item .num { font-size: 2.4rem; font-weight: 800; line-height: 1; }
+    .stat-item .lbl { font-size: .85rem; opacity: .85; margin-top: 4px; }
+
+    /* ── SECTION SHARED ── */
+    section { padding: 80px 5%; }
+    .section-tag {
+      display: inline-block;
+      background: #eff6ff; color: var(--primary);
+      padding: 4px 14px; border-radius: 100px;
+      font-size: .78rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .06em;
+      margin-bottom: 12px;
+    }
+    h2.section-title {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 800; color: var(--dark);
+      margin-bottom: 12px; line-height: 1.2;
+    }
+    .section-sub { color: var(--muted); font-size: 1.05rem; max-width: 560px; line-height: 1.65; }
+    .center { text-align: center; }
+    .center .section-sub { margin: 0 auto; }
+
+    /* ── CATEGORIES TABS ── */
+    .tabs-wrap { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin: 40px 0 50px; }
+    .tab-btn {
+      padding: 10px 22px; border-radius: 100px;
+      border: 2px solid var(--border); background: white;
+      font-size: .9rem; font-weight: 600; cursor: pointer;
+      color: var(--text); transition: all .2s;
+    }
+    .tab-btn:hover, .tab-btn.active {
+      border-color: var(--primary); background: var(--primary); color: white;
+    }
+
+    /* ── CATEGORY CARD ── */
+    .category-panel { display: none; }
+    .category-panel.active { display: block; }
+    .cat-layout {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 50px; align-items: center;
+      background: var(--light-bg); border-radius: 20px;
+      padding: 50px; border: 1px solid var(--border);
+    }
+    .cat-info .cat-icon {
+      width: 54px; height: 54px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem; margin-bottom: 18px;
+    }
+    .cat-info h3 { font-size: 1.7rem; font-weight: 800; color: var(--dark); margin-bottom: 10px; }
+    .cat-info p { color: var(--muted); line-height: 1.7; margin-bottom: 24px; }
+    .results-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 28px; }
+    .result-box {
+      background: white; border-radius: 10px; padding: 16px;
+      border: 1px solid var(--border); text-align: center;
+    }
+    .result-box .r-val { font-size: 1.6rem; font-weight: 800; color: var(--green); }
+    .result-box .r-lbl { font-size: .78rem; color: var(--muted); margin-top: 4px; }
+    .result-box.blue .r-val { color: var(--primary); }
+    .template-link {
+      display: inline-block; background: var(--primary); color: white;
+      padding: 12px 26px; border-radius: 8px; text-decoration: none;
+      font-weight: 700; font-size: .92rem; transition: all .2s;
+    }
+    .template-link:hover { background: var(--primary-dark); transform: translateY(-1px); }
+
+    /* Template preview */
+    .template-preview { border-radius: 14px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,.15); }
+    .tp-bar {
+      padding: 10px 16px; display: flex; align-items: center; gap: 7px;
+    }
+    .tp-content { background: white; }
+
+    /* ─ Doctor template ─ */
+    .tp-doctor .tp-bar { background: #0f4c81; }
+    .tp-doctor .tp-hero { background: linear-gradient(135deg,#0f4c81,#1a73e8); padding: 22px; color:white; }
+    .tp-doctor .tp-hero h4 { font-size: .9rem; margin-bottom: 4px; }
+    .tp-doctor .tp-hero p { font-size: .65rem; opacity: .8; margin-bottom: 10px; }
+    .tp-doctor .tp-hero .tp-btn { background: white; color: #0f4c81; padding: 5px 14px; border-radius: 6px; font-size: .65rem; font-weight: 700; display: inline-block; }
+    .tp-doctor .tp-services { display: flex; gap: 6px; padding: 12px; background: #f0f7ff; }
+    .tp-doctor .tp-service { flex:1; background: white; border-radius: 8px; padding: 8px; text-align:center; border: 1px solid #dbeafe; }
+    .tp-doctor .tp-service .s-icon { font-size: .9rem; }
+    .tp-doctor .tp-service .s-name { font-size: .55rem; color: #334155; margin-top: 4px; font-weight: 600; }
+    .tp-doctor .tp-stats { display: flex; justify-content: space-around; padding: 10px; background: white; border-top: 1px solid #e2e8f0; }
+    .tp-stat { text-align:center; }
+    .tp-stat .tv { font-size: .8rem; font-weight: 800; color: #1a73e8; }
+    .tp-stat .tl { font-size: .5rem; color: #94a3b8; }
+
+    /* ─ Electrician template ─ */
+    .tp-elec .tp-bar { background: #1a1a1a; }
+    .tp-elec .tp-hero { background: linear-gradient(135deg,#1a1a1a,#f59e0b); padding: 22px; color:white; }
+    .tp-elec .tp-hero h4 { font-size: .9rem; margin-bottom: 4px; }
+    .tp-elec .tp-hero p { font-size: .65rem; opacity: .85; margin-bottom: 10px; }
+    .tp-elec .tp-hero .tp-btn { background: #f59e0b; color: #1a1a1a; padding: 5px 14px; border-radius: 6px; font-size: .65rem; font-weight: 700; display: inline-block; }
+    .tp-elec .tp-services { display: flex; gap: 6px; padding: 12px; background: #fffbeb; }
+    .tp-elec .tp-service { flex:1; background: white; border-radius: 8px; padding: 8px; text-align:center; border: 1px solid #fde68a; }
+    .tp-elec .tp-service .s-icon { font-size: .9rem; }
+    .tp-elec .tp-service .s-name { font-size: .55rem; color: #334155; margin-top: 4px; font-weight: 600; }
+    .tp-elec .tp-stats { display: flex; justify-content: space-around; padding: 10px; background: white; border-top: 1px solid #e2e8f0; }
+
+    /* ─ Restaurant template ─ */
+    .tp-rest .tp-bar { background: #7c1d1d; }
+    .tp-rest .tp-hero { background: linear-gradient(135deg,#7c1d1d,#dc2626); padding: 22px; color:white; }
+    .tp-rest .tp-hero h4 { font-size: .9rem; margin-bottom: 4px; }
+    .tp-rest .tp-hero p { font-size: .65rem; opacity: .85; margin-bottom: 10px; }
+    .tp-rest .tp-hero .tp-btn { background: #fbbf24; color: #7c1d1d; padding: 5px 14px; border-radius: 6px; font-size: .65rem; font-weight: 700; display: inline-block; }
+    .tp-rest .tp-services { display: flex; gap: 6px; padding: 12px; background: #fff5f5; }
+    .tp-rest .tp-service { flex:1; background: white; border-radius: 8px; padding: 8px; text-align:center; border: 1px solid #fecaca; }
+    .tp-rest .tp-service .s-icon { font-size: .9rem; }
+    .tp-rest .tp-service .s-name { font-size: .55rem; color: #334155; margin-top: 4px; font-weight: 600; }
+    .tp-rest .tp-stats { display: flex; justify-content: space-around; padding: 10px; background: white; border-top: 1px solid #e2e8f0; }
+
+    /* ─ Retail template ─ */
+    .tp-retail .tp-bar { background: #312e81; }
+    .tp-retail .tp-hero { background: linear-gradient(135deg,#312e81,#7c3aed); padding: 22px; color:white; }
+    .tp-retail .tp-hero h4 { font-size: .9rem; margin-bottom: 4px; }
+    .tp-retail .tp-hero p { font-size: .65rem; opacity: .85; margin-bottom: 10px; }
+    .tp-retail .tp-hero .tp-btn { background: #f472b6; color: white; padding: 5px 14px; border-radius: 6px; font-size: .65rem; font-weight: 700; display: inline-block; }
+    .tp-retail .tp-services { display: flex; gap: 6px; padding: 12px; background: #f5f3ff; }
+    .tp-retail .tp-service { flex:1; background: white; border-radius: 8px; padding: 8px; text-align:center; border: 1px solid #ddd6fe; }
+    .tp-retail .tp-service .s-icon { font-size: .9rem; }
+    .tp-retail .tp-service .s-name { font-size: .55rem; color: #334155; margin-top: 4px; font-weight: 600; }
+    .tp-retail .tp-stats { display: flex; justify-content: space-around; padding: 10px; background: white; border-top: 1px solid #e2e8f0; }
+
+    /* ─ Gym template ─ */
+    .tp-gym .tp-bar { background: #1a1a1a; }
+    .tp-gym .tp-hero { background: linear-gradient(135deg,#1a1a1a,#16a34a); padding: 22px; color:white; }
+    .tp-gym .tp-hero h4 { font-size: .9rem; margin-bottom: 4px; }
+    .tp-gym .tp-hero p { font-size: .65rem; opacity: .85; margin-bottom: 10px; }
+    .tp-gym .tp-hero .tp-btn { background: #22c55e; color: white; padding: 5px 14px; border-radius: 6px; font-size: .65rem; font-weight: 700; display: inline-block; }
+    .tp-gym .tp-services { display: flex; gap: 6px; padding: 12px; background: #f0fdf4; }
+    .tp-gym .tp-service { flex:1; background: white; border-radius: 8px; padding: 8px; text-align:center; border: 1px solid #bbf7d0; }
+    .tp-gym .tp-service .s-icon { font-size: .9rem; }
+    .tp-gym .tp-service .s-name { font-size: .55rem; color: #334155; margin-top: 4px; font-weight: 600; }
+    .tp-gym .tp-stats { display: flex; justify-content: space-around; padding: 10px; background: white; border-top: 1px solid #e2e8f0; }
+
+    /* ─ Real Estate template ─ */
+    .tp-realty .tp-bar { background: #14532d; }
+    .tp-realty .tp-hero { background: linear-gradient(135deg,#14532d,#059669); padding: 22px; color:white; }
+    .tp-realty .tp-hero h4 { font-size: .9rem; margin-bottom: 4px; }
+    .tp-realty .tp-hero p { font-size: .65rem; opacity: .85; margin-bottom: 10px; }
+    .tp-realty .tp-hero .tp-btn { background: #f59e0b; color: #1a1a1a; padding: 5px 14px; border-radius: 6px; font-size: .65rem; font-weight: 700; display: inline-block; }
+    .tp-realty .tp-services { display: flex; gap: 6px; padding: 12px; background: #ecfdf5; }
+    .tp-realty .tp-service { flex:1; background: white; border-radius: 8px; padding: 8px; text-align:center; border: 1px solid #a7f3d0; }
+    .tp-realty .tp-service .s-icon { font-size: .9rem; }
+    .tp-realty .tp-service .s-name { font-size: .55rem; color: #334155; margin-top: 4px; font-weight: 600; }
+    .tp-realty .tp-stats { display: flex; justify-content: space-around; padding: 10px; background: white; border-top: 1px solid #e2e8f0; }
+
+    /* ─ Salon template ─ */
+    .tp-salon .tp-bar { background: #831843; }
+    .tp-salon .tp-hero { background: linear-gradient(135deg,#831843,#db2777); padding: 22px; color:white; }
+    .tp-salon .tp-hero h4 { font-size: .9rem; margin-bottom: 4px; }
+    .tp-salon .tp-hero p { font-size: .65rem; opacity: .85; margin-bottom: 10px; }
+    .tp-salon .tp-hero .tp-btn { background: white; color: #831843; padding: 5px 14px; border-radius: 6px; font-size: .65rem; font-weight: 700; display: inline-block; }
+    .tp-salon .tp-services { display: flex; gap: 6px; padding: 12px; background: #fff0f6; }
+    .tp-salon .tp-service { flex:1; background: white; border-radius: 8px; padding: 8px; text-align:center; border: 1px solid #fbcfe8; }
+    .tp-salon .tp-service .s-icon { font-size: .9rem; }
+    .tp-salon .tp-service .s-name { font-size: .55rem; color: #334155; margin-top: 4px; font-weight: 600; }
+    .tp-salon .tp-stats { display: flex; justify-content: space-around; padding: 10px; background: white; border-top: 1px solid #e2e8f0; }
+
+    /* ─ Lawyer template ─ */
+    .tp-law .tp-bar { background: #1c1917; }
+    .tp-law .tp-hero { background: linear-gradient(135deg,#1c1917,#44403c); padding: 22px; color:white; }
+    .tp-law .tp-hero h4 { font-size: .9rem; margin-bottom: 4px; }
+    .tp-law .tp-hero p { font-size: .65rem; opacity: .85; margin-bottom: 10px; }
+    .tp-law .tp-hero .tp-btn { background: #d97706; color: white; padding: 5px 14px; border-radius: 6px; font-size: .65rem; font-weight: 700; display: inline-block; }
+    .tp-law .tp-services { display: flex; gap: 6px; padding: 12px; background: #fafaf9; }
+    .tp-law .tp-service { flex:1; background: white; border-radius: 8px; padding: 8px; text-align:center; border: 1px solid #e7e5e4; }
+    .tp-law .tp-service .s-icon { font-size: .9rem; }
+    .tp-law .tp-service .s-name { font-size: .55rem; color: #334155; margin-top: 4px; font-weight: 600; }
+    .tp-law .tp-stats { display: flex; justify-content: space-around; padding: 10px; background: white; border-top: 1px solid #e2e8f0; }
+
+    /* ── HOW IT WORKS ── */
+    .how-section { background: var(--dark); color: white; padding: 80px 5%; }
+    .how-section h2 { color: white; }
+    .how-section .section-sub { color: #94a3b8; }
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin-top: 50px; }
+    .step { text-align: center; padding: 30px 20px; background: rgba(255,255,255,.05); border-radius: 16px; border: 1px solid rgba(255,255,255,.08); }
+    .step-num {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: var(--primary); color: white;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 1.1rem; margin: 0 auto 16px;
+    }
+    .step h4 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .step p { color: #94a3b8; font-size: .87rem; line-height: 1.6; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials { background: var(--light-bg); }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 50px; }
+    .tcard {
+      background: white; border-radius: 14px; padding: 28px;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 12px rgba(0,0,0,.04);
+    }
+    .tcard .stars { color: #f59e0b; font-size: 1rem; margin-bottom: 12px; }
+    .tcard p { color: var(--text); line-height: 1.65; font-size: .92rem; margin-bottom: 18px; }
+    .tcard .author { display: flex; align-items: center; gap: 12px; }
+    .tcard .avatar {
+      width: 42px; height: 42px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: .95rem; color: white;
+    }
+    .tcard .author-info .name { font-weight: 700; font-size: .9rem; color: var(--dark); }
+    .tcard .author-info .role { font-size: .78rem; color: var(--muted); }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: linear-gradient(135deg, #1a3a6e 0%, #1a73e8 100%);
+      color: white; text-align: center; padding: 90px 5%;
+    }
+    .cta-section h2 { font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 800; margin-bottom: 14px; }
+    .cta-section p { color: #bfdbfe; font-size: 1.1rem; margin-bottom: 36px; }
+    .cta-form {
+      display: flex; gap: 12px; max-width: 520px; margin: 0 auto; flex-wrap: wrap; justify-content: center;
+    }
+    .cta-form input {
+      flex: 1; min-width: 200px; padding: 14px 18px;
+      border-radius: 8px; border: none; font-size: .95rem;
+      background: rgba(255,255,255,.15); color: white; outline: none;
+      border: 1px solid rgba(255,255,255,.3);
+    }
+    .cta-form input::placeholder { color: rgba(255,255,255,.6); }
+    .cta-form button {
+      background: #f59e0b; color: #1a1a1a;
+      padding: 14px 28px; border-radius: 8px;
+      border: none; font-weight: 700; font-size: .95rem;
+      cursor: pointer; transition: all .2s;
+    }
+    .cta-form button:hover { background: #fbbf24; transform: translateY(-1px); }
+    .cta-note { color: rgba(255,255,255,.5); font-size: .78rem; margin-top: 12px; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark); color: #94a3b8;
+      padding: 60px 5% 30px;
+    }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+    .footer-brand .logo { margin-bottom: 12px; display: block; }
+    .footer-brand p { font-size: .87rem; line-height: 1.65; }
+    .footer-col h5 { color: white; font-weight: 700; margin-bottom: 14px; font-size: .92rem; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-col ul a { text-decoration: none; color: #94a3b8; font-size: .87rem; transition: color .2s; }
+    .footer-col ul a:hover { color: white; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding-top: 24px; display: flex; justify-content: space-between;
+      font-size: .82rem; flex-wrap: wrap; gap: 8px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero { flex-direction: column; padding: 60px 5% 50px; }
+      .cat-layout { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .steps { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .results-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAVIGATION ── -->
+<nav>
+  <div class="logo">M<span>Global</span></div>
+  <ul class="nav-links">
+    <li><a href="#templates">Templates</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#testimonials">Results</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Book Free Consultation</a>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-text">
+    <span class="hero-badge">🌐 Web Development Agency</span>
+    <h1>Websites That <span class="highlight">Grow</span> Your Business</h1>
+    <p>MGlobal builds high-performance websites for professionals and businesses — designed to attract customers, increase traffic, and drive real revenue.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Book Free Consultation</a>
+      <a href="#templates" class="btn-outline">View Templates →</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="browser-mock">
+      <div class="browser-bar">
+        <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+        <div class="url-bar">mglobal.com/your-business</div>
+      </div>
+      <div class="browser-content">
+        <div class="mock-site-hero">
+          <div class="m-logo">⚕ City Medical Centre</div>
+          <h3>Trusted Healthcare for the Whole Family</h3>
+          <p>Book appointments online · 5-star rated · Open 7 days</p>
+          <span class="mock-btn">Book Appointment →</span>
+        </div>
+        <div class="mock-stats-row">
+          <div class="mock-stat"><div class="val">+183%</div><div class="lbl">More Bookings</div></div>
+          <div class="mock-stat"><div class="val">4.9★</div><div class="lbl">Google Rating</div></div>
+          <div class="mock-stat"><div class="val">+240%</div><div class="lbl">Web Traffic</div></div>
+        </div>
+        <div class="mock-cards">
+          <div class="mock-card">
+            <div class="mc-t">Services</div>
+            <div class="mc-bar blue"></div>
+            <div class="mc-bar"></div>
+            <div class="mc-p">General · Dental · Pediatrics</div>
+          </div>
+          <div class="mock-card">
+            <div class="mc-t">Online Booking</div>
+            <div class="mc-bar blue short"></div>
+            <div class="mc-bar"></div>
+            <div class="mc-p">Live calendar integration</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── STATS BAND ── -->
+<div class="stats-band">
+  <div class="stat-item"><div class="num">250+</div><div class="lbl">Websites Delivered</div></div>
+  <div class="stat-item"><div class="num">+195%</div><div class="lbl">Avg. Traffic Increase</div></div>
+  <div class="stat-item"><div class="num">+140%</div><div class="lbl">Avg. Sales Growth</div></div>
+  <div class="stat-item"><div class="num">12</div><div class="lbl">Industries Served</div></div>
+  <div class="stat-item"><div class="num">98%</div><div class="lbl">Client Satisfaction</div></div>
+</div>
+
+<!-- ── TEMPLATE SHOWCASE ── -->
+<section id="templates">
+  <div class="center">
+    <span class="section-tag">Template Showcase</span>
+    <h2 class="section-title">Websites Built for Your Industry</h2>
+    <p class="section-sub">Every template is designed specifically for your profession — with the features your customers expect and the results you deserve.</p>
+  </div>
+
+  <div class="tabs-wrap">
+    <button class="tab-btn active" onclick="showTab('doctor')">🩺 Healthcare</button>
+    <button class="tab-btn" onclick="showTab('elec')">⚡ Electricians</button>
+    <button class="tab-btn" onclick="showTab('rest')">🍽 Restaurants</button>
+    <button class="tab-btn" onclick="showTab('retail')">🛍 Retail / E-commerce</button>
+    <button class="tab-btn" onclick="showTab('gym')">💪 Gym / Fitness</button>
+    <button class="tab-btn" onclick="showTab('realty')">🏠 Real Estate</button>
+    <button class="tab-btn" onclick="showTab('salon')">💅 Salon / Beauty</button>
+    <button class="tab-btn" onclick="showTab('law')">⚖ Law Firms</button>
+  </div>
+
+  <!-- DOCTOR -->
+  <div id="tab-doctor" class="category-panel active">
+    <div class="cat-layout">
+      <div class="cat-info">
+        <div class="cat-icon" style="background:#eff6ff;">🩺</div>
+        <h3>Healthcare & Medical</h3>
+        <p>We build clean, trustworthy websites for doctors, clinics, dentists, and specialists. Patients can book appointments, read about services, and find contact info — all from any device.</p>
+        <div class="results-grid">
+          <div class="result-box"><div class="r-val">+183%</div><div class="r-lbl">Patient Bookings</div></div>
+          <div class="result-box blue"><div class="r-val">+240%</div><div class="r-lbl">Website Traffic</div></div>
+          <div class="result-box blue"><div class="r-val">+92%</div><div class="r-lbl">New Patients / Mo</div></div>
+          <div class="result-box"><div class="r-val">4.9★</div><div class="r-lbl">Avg. Google Rating</div></div>
+        </div>
+        <a href="#contact" class="template-link">Get This for Your Clinic →</a>
+      </div>
+      <div class="template-preview tp-doctor">
+        <div class="tp-bar">
+          <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+        </div>
+        <div class="tp-content">
+          <div class="tp-hero">
+            <h4>🏥 City Medical Centre</h4>
+            <p>Trusted care for your whole family — General, Dental & Pediatrics</p>
+            <span class="tp-btn">Book Appointment →</span>
+          </div>
+          <div class="tp-services">
+            <div class="tp-service"><div class="s-icon">🫀</div><div class="s-name">Cardiology</div></div>
+            <div class="tp-service"><div class="s-icon">🦷</div><div class="s-name">Dentistry</div></div>
+            <div class="tp-service"><div class="s-icon">👶</div><div class="s-name">Pediatrics</div></div>
+            <div class="tp-service"><div class="s-icon">🧬</div><div class="s-name">Lab Tests</div></div>
+          </div>
+          <div class="tp-stats">
+            <div class="tp-stat"><div class="tv">1,200+</div><div class="tl">Patients Served</div></div>
+            <div class="tp-stat"><div class="tv">15 yrs</div><div class="tl">Experience</div></div>
+            <div class="tp-stat"><div class="tv">Open 7</div><div class="tl">Days a Week</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ELECTRICIAN -->
+  <div id="tab-elec" class="category-panel">
+    <div class="cat-layout">
+      <div class="cat-info">
+        <div class="cat-icon" style="background:#fffbeb;">⚡</div>
+        <h3>Electricians & Tradespeople</h3>
+        <p>Bold, mobile-first websites for electricians, plumbers, HVAC, and other tradespeople. Customers can request quotes, see services, and call you in one tap.</p>
+        <div class="results-grid">
+          <div class="result-box"><div class="r-val">+210%</div><div class="r-lbl">Quote Requests</div></div>
+          <div class="result-box blue"><div class="r-val">+175%</div><div class="r-lbl">Website Traffic</div></div>
+          <div class="result-box blue"><div class="r-val">+88%</div><div class="r-lbl">Calls Per Month</div></div>
+          <div class="result-box"><div class="r-val">3.5×</div><div class="r-lbl">Revenue Growth</div></div>
+        </div>
+        <a href="#contact" class="template-link">Get This for Your Trade Business →</a>
+      </div>
+      <div class="template-preview tp-elec">
+        <div class="tp-bar">
+          <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+        </div>
+        <div class="tp-content">
+          <div class="tp-hero">
+            <h4>⚡ ProVolt Electrical Services</h4>
+            <p>Fast, reliable, licensed — Residential & Commercial electricians</p>
+            <span class="tp-btn">Get Free Quote →</span>
+          </div>
+          <div class="tp-services">
+            <div class="tp-service"><div class="s-icon">🔌</div><div class="s-name">Installations</div></div>
+            <div class="tp-service"><div class="s-icon">🔧</div><div class="s-name">Repairs</div></div>
+            <div class="tp-service"><div class="s-icon">💡</div><div class="s-name">Lighting</div></div>
+            <div class="tp-service"><div class="s-icon">🏭</div><div class="s-name">Commercial</div></div>
+          </div>
+          <div class="tp-stats">
+            <div class="tp-stat"><div class="tv">500+</div><div class="tl">Jobs Done</div></div>
+            <div class="tp-stat"><div class="tv">Same Day</div><div class="tl">Service</div></div>
+            <div class="tp-stat"><div class="tv">Licensed</div><div class="tl">& Insured</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESTAURANT -->
+  <div id="tab-rest" class="category-panel">
+    <div class="cat-layout">
+      <div class="cat-info">
+        <div class="cat-icon" style="background:#fff5f5;">🍽</div>
+        <h3>Restaurants & Food</h3>
+        <p>Appetizing websites for restaurants, cafes, and catering businesses. Showcase your menu, accept reservations, and run online orders — all beautifully designed.</p>
+        <div class="results-grid">
+          <div class="result-box"><div class="r-val">+165%</div><div class="r-lbl">Online Orders</div></div>
+          <div class="result-box blue"><div class="r-val">+220%</div><div class="r-lbl">Table Reservations</div></div>
+          <div class="result-box blue"><div class="r-val">+95%</div><div class="r-lbl">Monthly Traffic</div></div>
+          <div class="result-box"><div class="r-val">+78%</div><div class="r-lbl">Revenue Growth</div></div>
+        </div>
+        <a href="#contact" class="template-link">Get This for Your Restaurant →</a>
+      </div>
+      <div class="template-preview tp-rest">
+        <div class="tp-bar">
+          <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+        </div>
+        <div class="tp-content">
+          <div class="tp-hero">
+            <h4>🍝 La Bella Cucina</h4>
+            <p>Authentic Italian dining — Reserve a table or order online</p>
+            <span class="tp-btn">Reserve Table →</span>
+          </div>
+          <div class="tp-services">
+            <div class="tp-service"><div class="s-icon">🍕</div><div class="s-name">Pizzas</div></div>
+            <div class="tp-service"><div class="s-icon">🍝</div><div class="s-name">Pasta</div></div>
+            <div class="tp-service"><div class="s-icon">🥗</div><div class="s-name">Salads</div></div>
+            <div class="tp-service"><div class="s-icon">🍰</div><div class="s-name">Desserts</div></div>
+          </div>
+          <div class="tp-stats">
+            <div class="tp-stat"><div class="tv">4.8★</div><div class="tl">Google Reviews</div></div>
+            <div class="tp-stat"><div class="tv">Online</div><div class="tl">Ordering</div></div>
+            <div class="tp-stat"><div class="tv">Open</div><div class="tl">Mon – Sun</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RETAIL -->
+  <div id="tab-retail" class="category-panel">
+    <div class="cat-layout">
+      <div class="cat-info">
+        <div class="cat-icon" style="background:#f5f3ff;">🛍</div>
+        <h3>Retail & E-commerce</h3>
+        <p>Powerful online stores for boutiques, fashion, electronics, and any retail business. We build fast, conversion-optimised stores that turn visitors into buyers.</p>
+        <div class="results-grid">
+          <div class="result-box"><div class="r-val">+280%</div><div class="r-lbl">Online Sales</div></div>
+          <div class="result-box blue"><div class="r-val">+310%</div><div class="r-lbl">Product Views</div></div>
+          <div class="result-box blue"><div class="r-val">+145%</div><div class="r-lbl">Monthly Visitors</div></div>
+          <div class="result-box"><div class="r-val">4.2×</div><div class="r-lbl">Revenue Growth</div></div>
+        </div>
+        <a href="#contact" class="template-link">Get This for Your Store →</a>
+      </div>
+      <div class="template-preview tp-retail">
+        <div class="tp-bar">
+          <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+        </div>
+        <div class="tp-content">
+          <div class="tp-hero">
+            <h4>👗 Nova Boutique</h4>
+            <p>Trendy fashion & accessories — Shop online, delivered to your door</p>
+            <span class="tp-btn">Shop Now →</span>
+          </div>
+          <div class="tp-services">
+            <div class="tp-service"><div class="s-icon">👗</div><div class="s-name">Women's</div></div>
+            <div class="tp-service"><div class="s-icon">👔</div><div class="s-name">Men's</div></div>
+            <div class="tp-service"><div class="s-icon">👜</div><div class="s-name">Accessories</div></div>
+            <div class="tp-service"><div class="s-icon">🎁</div><div class="s-name">Gift Cards</div></div>
+          </div>
+          <div class="tp-stats">
+            <div class="tp-stat"><div class="tv">500+</div><div class="tl">Products</div></div>
+            <div class="tp-stat"><div class="tv">Fast</div><div class="tl">Shipping</div></div>
+            <div class="tp-stat"><div class="tv">Secure</div><div class="tl">Checkout</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GYM -->
+  <div id="tab-gym" class="category-panel">
+    <div class="cat-layout">
+      <div class="cat-info">
+        <div class="cat-icon" style="background:#f0fdf4;">💪</div>
+        <h3>Gym & Fitness</h3>
+        <p>High-energy websites for gyms, personal trainers, yoga studios, and fitness centres. Show your classes, let members sign up, and build your community online.</p>
+        <div class="results-grid">
+          <div class="result-box"><div class="r-val">+200%</div><div class="r-lbl">Memberships</div></div>
+          <div class="result-box blue"><div class="r-val">+255%</div><div class="r-lbl">Class Sign-ups</div></div>
+          <div class="result-box blue"><div class="r-val">+130%</div><div class="r-lbl">Monthly Traffic</div></div>
+          <div class="result-box"><div class="r-val">3.8×</div><div class="r-lbl">Revenue Growth</div></div>
+        </div>
+        <a href="#contact" class="template-link">Get This for Your Gym →</a>
+      </div>
+      <div class="template-preview tp-gym">
+        <div class="tp-bar">
+          <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+        </div>
+        <div class="tp-content">
+          <div class="tp-hero">
+            <h4>💪 Apex Fitness Club</h4>
+            <p>Transform your body — Join classes, book PT sessions, track progress</p>
+            <span class="tp-btn">Join Today →</span>
+          </div>
+          <div class="tp-services">
+            <div class="tp-service"><div class="s-icon">🏋️</div><div class="s-name">Weights</div></div>
+            <div class="tp-service"><div class="s-icon">🧘</div><div class="s-name">Yoga</div></div>
+            <div class="tp-service"><div class="s-icon">🥊</div><div class="s-name">Boxing</div></div>
+            <div class="tp-service"><div class="s-icon">🏃</div><div class="s-name">Cardio</div></div>
+          </div>
+          <div class="tp-stats">
+            <div class="tp-stat"><div class="tv">800+</div><div class="tl">Members</div></div>
+            <div class="tp-stat"><div class="tv">20+</div><div class="tl">Classes / Week</div></div>
+            <div class="tp-stat"><div class="tv">Online</div><div class="tl">Booking</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REAL ESTATE -->
+  <div id="tab-realty" class="category-panel">
+    <div class="cat-layout">
+      <div class="cat-info">
+        <div class="cat-icon" style="background:#ecfdf5;">🏠</div>
+        <h3>Real Estate</h3>
+        <p>Professional property websites for agents, agencies, and developers. Showcase listings, capture leads, and let buyers book viewings — all from one clean, modern site.</p>
+        <div class="results-grid">
+          <div class="result-box"><div class="r-val">+190%</div><div class="r-lbl">Enquiries</div></div>
+          <div class="result-box blue"><div class="r-val">+270%</div><div class="r-lbl">Listing Views</div></div>
+          <div class="result-box blue"><div class="r-val">+115%</div><div class="r-lbl">Monthly Traffic</div></div>
+          <div class="result-box"><div class="r-val">+65%</div><div class="r-lbl">Properties Sold</div></div>
+        </div>
+        <a href="#contact" class="template-link">Get This for Your Agency →</a>
+      </div>
+      <div class="template-preview tp-realty">
+        <div class="tp-bar">
+          <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+        </div>
+        <div class="tp-content">
+          <div class="tp-hero">
+            <h4>🏠 Pinnacle Realty Group</h4>
+            <p>Find your dream home — Browse listings, book viewings, sell faster</p>
+            <span class="tp-btn">View Listings →</span>
+          </div>
+          <div class="tp-services">
+            <div class="tp-service"><div class="s-icon">🏡</div><div class="s-name">Buy</div></div>
+            <div class="tp-service"><div class="s-icon">📋</div><div class="s-name">Sell</div></div>
+            <div class="tp-service"><div class="s-icon">🔑</div><div class="s-name">Rent</div></div>
+            <div class="tp-service"><div class="s-icon">📊</div><div class="s-name">Valuations</div></div>
+          </div>
+          <div class="tp-stats">
+            <div class="tp-stat"><div class="tv">340+</div><div class="tl">Listings</div></div>
+            <div class="tp-stat"><div class="tv">10 yrs</div><div class="tl">Experience</div></div>
+            <div class="tp-stat"><div class="tv">Virtual</div><div class="tl">Tours</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SALON -->
+  <div id="tab-salon" class="category-panel">
+    <div class="cat-layout">
+      <div class="cat-info">
+        <div class="cat-icon" style="background:#fff0f6;">💅</div>
+        <h3>Salon & Beauty</h3>
+        <p>Elegant websites for hair salons, nail studios, spas, and beauty therapists. Let clients browse services, view your portfolio, and book appointments 24/7.</p>
+        <div class="results-grid">
+          <div class="result-box"><div class="r-val">+175%</div><div class="r-lbl">Appointments</div></div>
+          <div class="result-box blue"><div class="r-val">+230%</div><div class="r-lbl">Portfolio Views</div></div>
+          <div class="result-box blue"><div class="r-val">+120%</div><div class="r-lbl">Monthly Traffic</div></div>
+          <div class="result-box"><div class="r-val">+90%</div><div class="r-lbl">Revenue Growth</div></div>
+        </div>
+        <a href="#contact" class="template-link">Get This for Your Salon →</a>
+      </div>
+      <div class="template-preview tp-salon">
+        <div class="tp-bar">
+          <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+        </div>
+        <div class="tp-content">
+          <div class="tp-hero">
+            <h4>💅 Glam Studio</h4>
+            <p>Premium beauty services — Hair, nails, skin & more. Book online now!</p>
+            <span class="tp-btn">Book Now →</span>
+          </div>
+          <div class="tp-services">
+            <div class="tp-service"><div class="s-icon">✂️</div><div class="s-name">Haircuts</div></div>
+            <div class="tp-service"><div class="s-icon">💄</div><div class="s-name">Makeup</div></div>
+            <div class="tp-service"><div class="s-icon">💅</div><div class="s-name">Nails</div></div>
+            <div class="tp-service"><div class="s-icon">🛁</div><div class="s-name">Spa</div></div>
+          </div>
+          <div class="tp-stats">
+            <div class="tp-stat"><div class="tv">5★</div><div class="tl">Rated</div></div>
+            <div class="tp-stat"><div class="tv">Online</div><div class="tl">Booking</div></div>
+            <div class="tp-stat"><div class="tv">Gift</div><div class="tl">Vouchers</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LAW -->
+  <div id="tab-law" class="category-panel">
+    <div class="cat-layout">
+      <div class="cat-info">
+        <div class="cat-icon" style="background:#fafaf9;">⚖</div>
+        <h3>Law Firms</h3>
+        <p>Authoritative, trust-building websites for solicitors, barristers, and law practices. Communicate expertise, showcase case wins, and let potential clients reach you easily.</p>
+        <div class="results-grid">
+          <div class="result-box"><div class="r-val">+160%</div><div class="r-lbl">Consultations</div></div>
+          <div class="result-box blue"><div class="r-val">+195%</div><div class="r-lbl">Case Enquiries</div></div>
+          <div class="result-box blue"><div class="r-val">+140%</div><div class="r-lbl">Monthly Traffic</div></div>
+          <div class="result-box"><div class="r-val">2.9×</div><div class="r-lbl">Client Growth</div></div>
+        </div>
+        <a href="#contact" class="template-link">Get This for Your Firm →</a>
+      </div>
+      <div class="template-preview tp-law">
+        <div class="tp-bar">
+          <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+        </div>
+        <div class="tp-content">
+          <div class="tp-hero">
+            <h4>⚖ Sterling & Associates</h4>
+            <p>Expert legal counsel — Corporate, Family & Criminal law. Free initial consult.</p>
+            <span class="tp-btn">Free Consultation →</span>
+          </div>
+          <div class="tp-services">
+            <div class="tp-service"><div class="s-icon">🏢</div><div class="s-name">Corporate</div></div>
+            <div class="tp-service"><div class="s-icon">👨‍👩‍👧</div><div class="s-name">Family</div></div>
+            <div class="tp-service"><div class="s-icon">🔒</div><div class="s-name">Criminal</div></div>
+            <div class="tp-service"><div class="s-icon">📝</div><div class="s-name">Contracts</div></div>
+          </div>
+          <div class="tp-stats">
+            <div class="tp-stat"><div class="tv">20+ yrs</div><div class="tl">Experience</div></div>
+            <div class="tp-stat"><div class="tv">95%</div><div class="tl">Success Rate</div></div>
+            <div class="tp-stat"><div class="tv">Free</div><div class="tl">Consultation</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── HOW IT WORKS ── -->
+<section class="how-section" id="how">
+  <div class="center">
+    <span class="section-tag" style="background:rgba(255,255,255,.1);color:#93c5fd;">Our Process</span>
+    <h2 class="section-title">From Idea to Live Website in Days</h2>
+    <p class="section-sub">We've refined our process to be fast, collaborative, and stress-free for you.</p>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h4>Free Consultation</h4>
+      <p>We discuss your goals, industry, and vision. No jargon, no pressure — just an honest conversation.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h4>Custom Design</h4>
+      <p>Our designers create a tailored mockup based on your brand, industry, and target customers.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h4>Build & Refine</h4>
+      <p>We build your site and incorporate your feedback through unlimited revisions until it's perfect.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <h4>Launch & Grow</h4>
+      <p>We go live, handle all technical setup, and provide ongoing support to keep your traffic growing.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section class="testimonials" id="testimonials">
+  <div class="center">
+    <span class="section-tag">Client Results</span>
+    <h2 class="section-title">Real Businesses. Real Growth.</h2>
+    <p class="section-sub">Don't take our word for it — here's what our clients say after launching with MGlobal.</p>
+  </div>
+  <div class="testimonials-grid">
+    <div class="tcard">
+      <div class="stars">★★★★★</div>
+      <p>"Within 3 months of launching our new website, patient bookings doubled. MGlobal understood exactly what a medical practice needs — clean, professional, and trustworthy."</p>
+      <div class="author">
+        <div class="avatar" style="background:#1a73e8;">DR</div>
+        <div class="author-info">
+          <div class="name">Dr. Reema Patel</div>
+          <div class="role">City Medical Centre · Healthcare</div>
+        </div>
+      </div>
+    </div>
+    <div class="tcard">
+      <div class="stars">★★★★★</div>
+      <p>"I used to rely entirely on word of mouth. Now I get 10–15 quote requests a week through my website alone. Best investment I've made for my business."</p>
+      <div class="author">
+        <div class="avatar" style="background:#f59e0b;">JM</div>
+        <div class="author-info">
+          <div class="name">James Mitchell</div>
+          <div class="role">ProVolt Electrical · Trades</div>
+        </div>
+      </div>
+    </div>
+    <div class="tcard">
+      <div class="stars">★★★★★</div>
+      <p>"Our online orders grew by 165% in the first two months. The team at MGlobal made the whole process seamless — from design to going live in under a week."</p>
+      <div class="author">
+        <div class="avatar" style="background:#dc2626;">SL</div>
+        <div class="author-info">
+          <div class="name">Sofia Lombardi</div>
+          <div class="role">La Bella Cucina · Restaurant</div>
+        </div>
+      </div>
+    </div>
+    <div class="tcard">
+      <div class="stars">★★★★★</div>
+      <p>"Our boutique finally has an online presence that matches our in-store experience. Sales through the website now account for 40% of total revenue. Incredible."</p>
+      <div class="author">
+        <div class="avatar" style="background:#7c3aed;">NK</div>
+        <div class="author-info">
+          <div class="name">Nadia Khan</div>
+          <div class="role">Nova Boutique · Retail</div>
+        </div>
+      </div>
+    </div>
+    <div class="tcard">
+      <div class="stars">★★★★★</div>
+      <p>"Gym memberships went up 200% after the site launched. The online booking system alone saved us hours of admin every week. Couldn't be happier."</p>
+      <div class="author">
+        <div class="avatar" style="background:#16a34a;">TW</div>
+        <div class="author-info">
+          <div class="name">Tyler Walsh</div>
+          <div class="role">Apex Fitness Club · Gym</div>
+        </div>
+      </div>
+    </div>
+    <div class="tcard">
+      <div class="stars">★★★★★</div>
+      <p>"We saw a 160% jump in consultation requests within the first quarter. MGlobal delivered a site that communicates authority and trust — exactly what a law firm needs."</p>
+      <div class="author">
+        <div class="avatar" style="background:#44403c;">AS</div>
+        <div class="author-info">
+          <div class="name">Amanda Sterling</div>
+          <div class="role">Sterling & Associates · Law</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="cta-section" id="contact">
+  <span class="section-tag" style="background:rgba(255,255,255,.15);color:#bfdbfe;">Free Consultation</span>
+  <h2>Ready to Grow Your Business Online?</h2>
+  <p>Tell us your name and email — we'll reach out to schedule your free, no-obligation consultation.</p>
+  <form class="cta-form" onsubmit="handleSubmit(event)">
+    <input type="text" id="form-name" placeholder="Your Name" required />
+    <input type="email" id="form-email" placeholder="Your Email" required />
+    <button type="submit">Book Free Consultation →</button>
+  </form>
+  <p class="cta-note">No spam. No commitment. Just a friendly conversation about your goals.</p>
+  <div id="form-success" style="display:none;margin-top:20px;background:rgba(255,255,255,.15);border-radius:10px;padding:16px 24px;color:white;font-weight:600;">
+    ✅ Thank you! We'll be in touch within 24 hours.
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="logo">M<span style="color:#94a3b8;">Global</span></span>
+      <p>Professional web development for businesses and professionals who want to grow. We build websites that work.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Industries</h5>
+      <ul>
+        <li><a href="#">Healthcare</a></li>
+        <li><a href="#">Trades</a></li>
+        <li><a href="#">Restaurants</a></li>
+        <li><a href="#">Retail</a></li>
+        <li><a href="#">Fitness</a></li>
+        <li><a href="#">Law Firms</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Portfolio</a></li>
+        <li><a href="#">Pricing</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Careers</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="#">hello@mglobal.com</a></li>
+        <li><a href="#">+1 (800) 000-0000</a></li>
+        <li><a href="#">Free Consultation</a></li>
+        <li><a href="#">Support</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 MGlobal. All rights reserved.</span>
+    <span>Privacy Policy · Terms of Service</span>
+  </div>
+</footer>
+
+<script>
+  function showTab(id) {
+    document.querySelectorAll('.category-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    event.target.classList.add('active');
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    document.querySelector('.cta-form').style.display = 'none';
+    document.getElementById('form-success').style.display = 'block';
+  }
+</script>
+</body>
+</html>

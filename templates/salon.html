@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Shringar Beauty Parlour — Boring Road, Patna</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Segoe UI',system-ui,sans-serif;color:#334155;}
+    nav{background:#831843;padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:60px;}
+    .logo{color:white;font-weight:800;font-size:1.1rem;}
+    .nav-links{display:flex;gap:20px;list-style:none;}
+    .nav-links a{color:rgba(255,255,255,.85);text-decoration:none;font-size:.88rem;}
+    .nav-btn{background:white;color:#831843;padding:8px 18px;border-radius:6px;font-weight:700;font-size:.85rem;text-decoration:none;}
+    .hero{background:linear-gradient(135deg,#831843,#db2777);padding:60px 5%;color:white;display:flex;align-items:center;gap:40px;}
+    .hero-text{flex:1;}
+    .badge{display:inline-block;background:rgba(255,255,255,.15);padding:5px 14px;border-radius:100px;font-size:.75rem;font-weight:700;margin-bottom:14px;}
+    .hero h1{font-size:2rem;font-weight:800;margin-bottom:12px;line-height:1.2;}
+    .hero p{color:#fbcfe8;margin-bottom:20px;font-size:.95rem;line-height:1.7;}
+    .hero-btns{display:flex;gap:10px;flex-wrap:wrap;}
+    .btn-w{background:white;color:#831843;padding:11px 22px;border-radius:7px;font-weight:700;text-decoration:none;font-size:.9rem;}
+    .btn-wh{border:2px solid rgba(255,255,255,.4);color:white;padding:11px 22px;border-radius:7px;font-weight:600;text-decoration:none;font-size:.9rem;}
+    .hero-card{background:rgba(255,255,255,.12);border-radius:14px;padding:20px;border:1px solid rgba(255,255,255,.2);min-width:200px;}
+    .hc-title{font-weight:700;font-size:.88rem;margin-bottom:12px;}
+    .hc-row{display:flex;justify-content:space-between;margin-bottom:8px;}
+    .hc-l{font-size:.75rem;color:#fbcfe8;}
+    .hc-v{font-size:.75rem;font-weight:700;color:#fbbf24;}
+    .stats-bar{background:#db2777;display:flex;justify-content:space-around;padding:26px 5%;flex-wrap:wrap;gap:14px;}
+    .stat{text-align:center;}
+    .stat .num{font-size:1.7rem;font-weight:800;color:white;}
+    .stat .lbl{font-size:.75rem;color:#fbcfe8;margin-top:3px;}
+    .services{padding:50px 5%;background:#fff0f6;}
+    .section-title{text-align:center;font-size:1.5rem;font-weight:800;margin-bottom:8px;color:#0f172a;}
+    .section-sub{text-align:center;color:#64748b;margin-bottom:32px;font-size:.9rem;}
+    .svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+    .svc-card{background:white;border-radius:12px;padding:18px;text-align:center;border:1px solid #fbcfe8;transition:transform .2s,box-shadow .2s;}
+    .svc-card:hover{transform:translateY(-4px);box-shadow:0 8px 20px rgba(219,39,119,.1);}
+    .sc-icon{font-size:1.8rem;margin-bottom:8px;}
+    .sc-name{font-weight:700;font-size:.88rem;color:#831843;margin-bottom:4px;}
+    .sc-price{font-size:.75rem;color:#64748b;}
+    .bridal{padding:50px 5%;background:white;}
+    .bridal-card{background:linear-gradient(135deg,#831843,#db2777);border-radius:16px;padding:36px;color:white;display:flex;align-items:center;gap:30px;flex-wrap:wrap;}
+    .bridal-text h2{font-size:1.3rem;font-weight:800;margin-bottom:8px;}
+    .bridal-text p{color:#fbcfe8;font-size:.88rem;line-height:1.6;margin-bottom:16px;}
+    .bridal-btn{background:white;color:#831843;padding:11px 22px;border-radius:8px;font-weight:700;font-size:.88rem;text-decoration:none;display:inline-block;}
+    .bridal-features{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px;}
+    .bf{font-size:.78rem;color:#fbcfe8;display:flex;align-items:center;gap:6px;}
+    .stylists{padding:50px 5%;background:#fff0f6;}
+    .stylist-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px;}
+    .stcard{background:white;border-radius:12px;padding:18px;text-align:center;border:1px solid #fbcfe8;}
+    .st-avatar{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#831843,#db2777);display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin:0 auto 10px;}
+    .st-name{font-weight:800;font-size:.9rem;margin-bottom:3px;color:#831843;}
+    .st-spec{font-size:.75rem;color:#db2777;font-weight:600;}
+    .book-s{background:#831843;padding:50px 5%;text-align:center;color:white;}
+    .book-s h2{font-size:1.5rem;font-weight:800;margin-bottom:10px;}
+    .book-s p{color:#fbcfe8;margin-bottom:22px;}
+    .book-btn{background:white;color:#831843;padding:13px 30px;border-radius:8px;font-weight:800;font-size:.95rem;text-decoration:none;display:inline-block;}
+    footer{background:#4a0520;color:#fbcfe8;text-align:center;padding:18px;font-size:.8rem;}
+    @media(max-width:700px){.svc-grid{grid-template-columns:1fr 1fr;}.stylist-grid{grid-template-columns:1fr;}.hero{flex-direction:column;}}
+  </style>
+</head>
+<body>
+<nav>
+  <div class="logo">💅 Shringar Beauty Parlour</div>
+  <ul class="nav-links">
+    <li><a href="#">Home</a></li><li><a href="#">Services</a></li><li><a href="#">Bridal</a></li><li><a href="#">Gallery</a></li>
+  </ul>
+  <a href="../pages/book.html?category=salon&business=Shringar+Beauty+Parlour" class="nav-btn">Appointment Lo</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-text">
+    <span class="badge">💅 Boring Road, Patna · Bihar ki #1 Beauty Parlour Since 2008</span>
+    <h1>Sundar Dikhna Aapka Haq Hai — Shringar Beauty Parlour</h1>
+    <p>Hair, skin, nails, bridal makeup — sab kuch ek jagah. Patna ki trusted beauty parlour with certified stylists. 15+ saal ka experience.</p>
+    <div class="hero-btns">
+      <a href="../pages/book.html?category=salon&business=Shringar+Beauty+Parlour" class="btn-w">📅 Appointment Book Karein</a>
+      <a href="tel:9876533333" class="btn-wh">📞 Call: 98765-33333</a>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="hc-title">📊 Results After Website</div>
+    <div class="hc-row"><span class="hc-l">Monthly Bookings</span><span class="hc-v">+175%</span></div>
+    <div class="hc-row"><span class="hc-l">Online Visibility</span><span class="hc-v">+230%</span></div>
+    <div class="hc-row"><span class="hc-l">Revenue Growth</span><span class="hc-v">+90%</span></div>
+    <div class="hc-row"><span class="hc-l">Google Rating</span><span class="hc-v">5.0 ★</span></div>
+  </div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat"><div class="num">15 Yrs</div><div class="lbl">In Patna</div></div>
+  <div class="stat"><div class="num">10,000+</div><div class="lbl">Happy Clients</div></div>
+  <div class="stat"><div class="num">500+</div><div class="lbl">Bridal Makeups</div></div>
+  <div class="stat"><div class="num">5 ★</div><div class="lbl">Google Rating</div></div>
+</div>
+
+<section class="services">
+  <div class="section-title">Hamari Beauty Services</div>
+  <div class="section-sub">Certified stylists, premium products, guaranteed results</div>
+  <div class="svc-grid">
+    <div class="svc-card"><div class="sc-icon">✂️</div><div class="sc-name">Haircut & Styling</div><div class="sc-price">₹ 300 onwards</div></div>
+    <div class="svc-card"><div class="sc-icon">🎨</div><div class="sc-name">Hair Colour</div><div class="sc-price">₹ 800 onwards</div></div>
+    <div class="svc-card"><div class="sc-icon">💆</div><div class="sc-name">Facial & Cleanup</div><div class="sc-price">₹ 600 onwards</div></div>
+    <div class="svc-card"><div class="sc-icon">💅</div><div class="sc-name">Nail Art</div><div class="sc-price">₹ 400 onwards</div></div>
+    <div class="svc-card"><div class="sc-icon">🧖</div><div class="sc-name">Waxing</div><div class="sc-price">₹ 200 onwards</div></div>
+    <div class="svc-card"><div class="sc-icon">🌿</div><div class="sc-name">Keratin Treatment</div><div class="sc-price">₹ 2,500 onwards</div></div>
+    <div class="svc-card"><div class="sc-icon">👰</div><div class="sc-name">Bridal Makeup</div><div class="sc-price">₹ 8,000 onwards</div></div>
+    <div class="svc-card"><div class="sc-icon">🎁</div><div class="sc-name">Gift Vouchers</div><div class="sc-price">₹ 500, 1000, 2000</div></div>
+  </div>
+</section>
+
+<section class="bridal">
+  <div class="bridal-card">
+    <div class="bridal-text">
+      <h2>👰 Bridal Package — Special Bihar Weddings</h2>
+      <p>Aapki shaadi special hai. Hamare bridal makeup artists ne 500+ brides ko taiyaar kiya hai. Mehendi, sangeet, wedding — teeno ke liye special packages.</p>
+      <a href="../pages/book.html?category=salon&business=Shringar+Bridal+Package" class="bridal-btn">💍 Bridal Booking Karein</a>
+      <div class="bridal-features">
+        <div class="bf">✅ Trial makeup included</div>
+        <div class="bf">✅ Home visit available</div>
+        <div class="bf">✅ Full day coverage</div>
+        <div class="bf">✅ Touch-up kit included</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stylists">
+  <div class="section-title">Hamare Expert Stylists</div>
+  <div class="stylist-grid">
+    <div class="stcard"><div class="st-avatar">💄</div><div class="st-name">Reena Kumari</div><div class="st-spec">Head Stylist · Bridal & Hair Expert</div></div>
+    <div class="stcard"><div class="st-avatar">💅</div><div class="st-name">Anjali Singh</div><div class="st-spec">Nail Art & Skin Specialist</div></div>
+    <div class="stcard"><div class="st-avatar">🌿</div><div class="st-name">Pooja Devi</div><div class="st-spec">Hair Treatment & Colour Expert</div></div>
+  </div>
+</section>
+
+<div class="book-s">
+  <h2>Appointment Book Karein — Abhi</h2>
+  <p>Online booking available 24/7. Koi waiting line nahi.</p>
+  <a href="../pages/book.html?category=salon&business=Shringar+Beauty+Parlour" class="book-btn">💅 Book My Appointment</a>
+  <div style="margin-top:18px;display:flex;justify-content:center;gap:14px;flex-wrap:wrap;">
+    <span style="background:rgba(255,255,255,.15);padding:6px 14px;border-radius:100px;font-size:.78rem;">📍 Boring Road, Patna</span>
+    <span style="background:rgba(255,255,255,.15);padding:6px 14px;border-radius:100px;font-size:.78rem;">📞 98765-33333</span>
+    <span style="background:rgba(255,255,255,.15);padding:6px 14px;border-radius:100px;font-size:.78rem;">🕗 9am – 8pm Daily</span>
+  </div>
+</div>
+<footer>© 2026 Shringar Beauty Parlour · Boring Road, Patna — Website by MGlobal</footer>
+</body>
+</html>
