@@ -49,6 +49,13 @@
     .del-btn{background:#f472b6;color:white;padding:11px 22px;border-radius:8px;font-weight:700;font-size:.88rem;text-decoration:none;white-space:nowrap;}
     footer{background:#1e1b4b;color:#a5b4fc;text-align:center;padding:18px;font-size:.8rem;}
     @media(max-width:700px){.cat-grid{grid-template-columns:1fr 1fr;}.feat-grid{grid-template-columns:1fr;}.hero{flex-direction:column;}}
+
+    /* ── Language Toggle ── */
+    .lang-toggle{display:inline-flex;align-items:center;gap:2px;background:transparent;border:1.5px solid rgba(255,255,255,.4);border-radius:20px;padding:5px 8px;cursor:pointer;font-size:.78rem;font-weight:700;color:rgba(255,255,255,.85);white-space:nowrap;line-height:1;}
+    .lang-toggle:hover{background:rgba(255,255,255,.15);}
+    .lang-pill{padding:2px 6px;border-radius:10px;transition:background .2s,color .2s;}
+    .lang-pill.lang-active{background:rgba(255,255,255,.9);color:#1a1a1a;}
+    .lang-pill.lang-inactive{color:rgba(255,255,255,.5);}
   </style>
 </head>
 <body>
@@ -57,16 +64,16 @@
   <ul class="nav-links">
     <li><a href="#">Home</a></li><li><a href="#">Sarees</a></li><li><a href="#">Clothing</a></li><li><a href="#">Contact</a></li>
   </ul>
-  <a href="../pages/book.html?category=retail&business=Maurya+Emporium+Patna" class="nav-btn">Shop Now</a>
+  <button class="lang-toggle" onclick="toggleLanguage()"><span class="lang-pill lang-active">EN</span><span class="lang-pill lang-inactive">हिं</span></button><a href="../pages/book.html?category=retail&business=Maurya+Emporium+Patna" class="nav-btn">Shop Now</a>
 </nav>
 
 <div class="hero">
   <div class="hero-text">
-    <span class="badge">🛍 Patna City · Bihar ka Shopping Destination Since 1990</span>
-    <h1>Bihar ki Best Sarees & Clothing — Maurya Emporium</h1>
-    <p>Banarasi saree, silk, cotton, lehenga — sab kuch milega. Patna City aur Boring Road pe hamare stores. Bihar bhar mein home delivery.</p>
+    <span class="badge" data-i18n="t.ret.hero.badge">🛍 Patna City · Bihar's Shopping Destination Since 1990</span>
+    <h1 data-i18n="t.ret.hero.h1">Bihar's Best Sarees & Clothing — Maurya Emporium</h1>
+    <p data-i18n="t.ret.hero.p">Banarasi saree, silk, cotton, lehenga — everything available. Stores in Patna City and Boring Road. Home delivery across Bihar.</p>
     <div class="hero-btns">
-      <a href="../pages/book.html?category=retail&business=Maurya+Emporium+Patna" class="btn-p">🛒 Online Order Karein</a>
+      <a href="../pages/book.html?category=retail&business=Maurya+Emporium+Patna" class="btn-p" data-i18n="t.ret.hero.btn1">🛒 Order Online</a>
       <a href="tel:9876500001" class="btn-wh">📞 Call: 98765-00001</a>
     </div>
   </div>
@@ -80,8 +87,8 @@
 </div>
 
 <section class="categories">
-  <div class="section-title">Hamari Categories</div>
-  <div class="section-sub">Patna ka sabse bada textile collection</div>
+  <div class="section-title" data-i18n="t.ret.cat.title">Our Categories</div>
+  <div class="section-sub" data-i18n="t.ret.cat.sub">Patna's largest textile collection</div>
   <div class="cat-grid">
     <div class="ccat"><div class="cc-icon">👗</div><div class="cc-name">Sarees</div><div class="cc-items">Banarasi, Silk, Cotton, Kanjivaram</div></div>
     <div class="ccat"><div class="cc-icon">👘</div><div class="cc-name">Lehenga</div><div class="cc-items">Bridal, Party, Festive collections</div></div>
@@ -106,8 +113,8 @@
 <section class="delivery">
   <div class="del-card">
     <div class="del-text">
-      <h3>🚚 Bihar-Wide Home Delivery</h3>
-      <p>Patna, Muzaffarpur, Gaya, Bhagalpur, Darbhanga — poore Bihar mein delivery. ₹999 se upar free delivery.</p>
+      <h3 data-i18n="t.ret.del.h3">🚚 Bihar-Wide Home Delivery</h3>
+      <p data-i18n="t.ret.del.p">Delivery to Patna, Muzaffarpur, Gaya, Bhagalpur, Darbhanga — all of Bihar. Free delivery above ₹999.</p>
       <div class="del-badges">
         <span class="dbadge">📦 Secure Packaging</span>
         <span class="dbadge">🔄 Easy Returns</span>
@@ -119,5 +126,6 @@
 </section>
 
 <footer>© 2026 Maurya Emporium · Patna City & Boring Road, Patna — Website by MGlobal</footer>
+<script src="../js/i18n.js"></script>
 </body>
 </html>

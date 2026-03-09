@@ -59,6 +59,13 @@
     .book-btn{background:#22c55e;color:white;padding:13px 30px;border-radius:8px;font-weight:800;font-size:.95rem;text-decoration:none;display:inline-block;}
     footer{background:#0a0a0a;color:#64748b;text-align:center;padding:18px;font-size:.8rem;border-top:1px solid #1a1a1a;}
     @media(max-width:700px){.class-grid{grid-template-columns:1fr 1fr;}.mem-grid{grid-template-columns:1fr;}.tr-grid{grid-template-columns:1fr;}.hero{flex-direction:column;}}
+
+    /* ── Language Toggle ── */
+    .lang-toggle{display:inline-flex;align-items:center;gap:2px;background:transparent;border:1.5px solid rgba(255,255,255,.4);border-radius:20px;padding:5px 8px;cursor:pointer;font-size:.78rem;font-weight:700;color:rgba(255,255,255,.85);white-space:nowrap;line-height:1;}
+    .lang-toggle:hover{background:rgba(255,255,255,.15);}
+    .lang-pill{padding:2px 6px;border-radius:10px;transition:background .2s,color .2s;}
+    .lang-pill.lang-active{background:rgba(255,255,255,.9);color:#1a1a1a;}
+    .lang-pill.lang-inactive{color:rgba(255,255,255,.5);}
   </style>
 </head>
 <body>
@@ -67,16 +74,16 @@
   <ul class="nav-links">
     <li><a href="#">Home</a></li><li><a href="#">Classes</a></li><li><a href="#">Membership</a></li><li><a href="#">Trainers</a></li>
   </ul>
-  <a href="../pages/book.html?category=gym&business=Chandragupta+Fitness+Patna" class="nav-btn">Join Today</a>
+  <button class="lang-toggle" onclick="toggleLanguage()"><span class="lang-pill lang-active">EN</span><span class="lang-pill lang-inactive">हिं</span></button><a href="../pages/book.html?category=gym&business=Chandragupta+Fitness+Patna" class="nav-btn">Join Today</a>
 </nav>
 
 <div class="hero">
   <div class="hero-text">
     <span class="badge">💪 Fraser Road, Patna · Bihar's Premier Fitness Club</span>
-    <h1>Transform Karo Apni Body — Patna Ke Sath</h1>
-    <p>Chandragupta Fitness — Patna ka sabse complete gym. Personal training, yoga, zumba, aur boxing. 800+ members. Expert trainers.</p>
+    <h1 data-i18n="t.gym.hero.h1">Transform Your Body — With Patna's Best</h1>
+    <p data-i18n="t.gym.hero.p">Chandragupta Fitness — Patna's most complete gym. Personal training, yoga, zumba, and boxing. 800+ members. Expert trainers.</p>
     <div class="hero-btns">
-      <a href="../pages/book.html?category=gym&business=Chandragupta+Fitness+Patna" class="btn-g">🆓 Free Trial Book Karein</a>
+      <a href="../pages/book.html?category=gym&business=Chandragupta+Fitness+Patna" class="btn-g" data-i18n="t.gym.hero.btn1">🆓 Book Free Trial</a>
       <a href="tel:9876511111" class="btn-wh">📞 Call: 98765-11111</a>
     </div>
     <div class="trust-row">
@@ -91,18 +98,18 @@
   <div class="stat"><div class="num">800+</div><div class="lbl">Active Members</div></div>
   <div class="stat"><div class="num">20+</div><div class="lbl">Classes per Week</div></div>
   <div class="stat"><div class="num">8</div><div class="lbl">Expert Trainers</div></div>
-  <div class="stat"><div class="num">5 Yrs</div><div class="lbl">Fraser Road pe</div></div>
+  <div class="stat"><div class="num">5 Yrs</div><div class="lbl" data-i18n="t.gym.stats.4">on Fraser Road</div></div>
 </div>
 
 <section class="classes">
-  <div class="section-title">Hamare Classes</div>
-  <div class="section-sub">Apni fitness goal ke according choose karein</div>
+  <div class="section-title" data-i18n="t.gym.cls.title">Our Classes</div>
+  <div class="section-sub" data-i18n="t.gym.cls.sub">Choose according to your fitness goal</div>
   <div class="class-grid">
-    <div class="ccard"><div class="cc-icon">🏋️</div><div class="cc-name">Weight Training</div><div class="cc-time">Mon–Sat, 6am–9pm</div><div class="cc-price">Membership mein included</div></div>
+    <div class="ccard"><div class="cc-icon">🏋️</div><div class="cc-name">Weight Training</div><div class="cc-time">Mon–Sat, 6am–9pm</div><div class="cc-price" data-i18n="t.gym.cls.incl">Included in membership</div></div>
     <div class="ccard"><div class="cc-icon">🧘</div><div class="cc-name">Morning Yoga</div><div class="cc-time">Daily 6am–7:30am</div><div class="cc-price">₹ 800/month</div></div>
     <div class="ccard"><div class="cc-icon">💃</div><div class="cc-name">Zumba</div><div class="cc-time">Tue, Thu, Sat · 7pm</div><div class="cc-price">₹ 700/month</div></div>
     <div class="ccard"><div class="cc-icon">🥊</div><div class="cc-name">Boxing</div><div class="cc-time">Mon, Wed, Fri · 6pm</div><div class="cc-price">₹ 1,000/month</div></div>
-    <div class="ccard"><div class="cc-icon">🏃</div><div class="cc-name">Cardio Zone</div><div class="cc-time">Open all hours</div><div class="cc-price">Membership mein included</div></div>
+    <div class="ccard"><div class="cc-icon">🏃</div><div class="cc-name">Cardio Zone</div><div class="cc-time">Open all hours</div><div class="cc-price" data-i18n="t.gym.cls.incl">Included in membership</div></div>
     <div class="ccard"><div class="cc-icon">🤸</div><div class="cc-name">Crossfit</div><div class="cc-time">Mon, Wed, Fri · 5:30am</div><div class="cc-price">₹ 1,200/month</div></div>
     <div class="ccard"><div class="cc-icon">🧗</div><div class="cc-name">Functional Training</div><div class="cc-time">Daily 5pm–7pm</div><div class="cc-price">₹ 900/month</div></div>
     <div class="ccard"><div class="cc-icon">🥗</div><div class="cc-name">Diet Consultation</div><div class="cc-time">By appointment</div><div class="cc-price">₹ 500/session</div></div>
@@ -111,7 +118,7 @@
 
 <section class="membership">
   <div class="section-title">Membership Plans</div>
-  <div class="section-sub">Apne budget aur goal ke liye sahi plan chunein</div>
+  <div class="section-sub" data-i18n="t.gym.mem.sub">Choose the right plan for your budget and goal</div>
   <div class="mem-grid">
     <div class="mcard">
       <div class="m-tier">Basic</div>
@@ -154,7 +161,7 @@
 </section>
 
 <section class="trainers">
-  <div class="section-title">Hamare Expert Trainers</div>
+  <div class="section-title" data-i18n="t.gym.trn.title">Our Expert Trainers</div>
   <div class="tr-grid">
     <div class="tr-card"><div class="tr-avatar">💪</div><div class="tr-name">Ajay Singh</div><div class="tr-spec">Head Trainer — Strength & Conditioning</div><div class="tr-exp">10 yrs · NIS Certified · Ex-Bihar State Powerlifter</div></div>
     <div class="tr-card"><div class="tr-avatar">🧘</div><div class="tr-name">Priya Verma</div><div class="tr-spec">Yoga & Meditation Instructor</div><div class="tr-exp">7 yrs · RYT 500 Certified · Patna</div></div>
@@ -163,9 +170,9 @@
 </section>
 
 <div class="book-s">
-  <h2>Free Trial Lena Chahte Hain?</h2>
-  <p>Ek free trial session book karein. Koi commitment nahi.</p>
-  <a href="../pages/book.html?category=gym&business=Chandragupta+Fitness+Patna" class="book-btn">🆓 Free Trial Book Karein</a>
+  <h2 data-i18n="t.gym.book.h2">Want a Free Trial?</h2>
+  <p data-i18n="t.gym.book.p">Book a free trial session. No commitment.</p>
+  <a href="../pages/book.html?category=gym&business=Chandragupta+Fitness+Patna" class="book-btn" data-i18n="t.gym.book.btn">🆓 Book Free Trial</a>
   <div style="margin-top:18px;display:flex;justify-content:center;gap:14px;flex-wrap:wrap;">
     <span style="background:rgba(255,255,255,.1);padding:6px 14px;border-radius:100px;font-size:.78rem;">📍 Fraser Road, Patna</span>
     <span style="background:rgba(255,255,255,.1);padding:6px 14px;border-radius:100px;font-size:.78rem;">📞 98765-11111</span>
@@ -173,5 +180,6 @@
   </div>
 </div>
 <footer>© 2026 Chandragupta Fitness · Fraser Road, Patna — Website by MGlobal</footer>
+<script src="../js/i18n.js"></script>
 </body>
 </html>

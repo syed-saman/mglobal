@@ -56,6 +56,13 @@
     .book-btn{background:white;color:#831843;padding:13px 30px;border-radius:8px;font-weight:800;font-size:.95rem;text-decoration:none;display:inline-block;}
     footer{background:#4a0520;color:#fbcfe8;text-align:center;padding:18px;font-size:.8rem;}
     @media(max-width:700px){.svc-grid{grid-template-columns:1fr 1fr;}.stylist-grid{grid-template-columns:1fr;}.hero{flex-direction:column;}}
+
+    /* ── Language Toggle ── */
+    .lang-toggle{display:inline-flex;align-items:center;gap:2px;background:transparent;border:1.5px solid rgba(255,255,255,.4);border-radius:20px;padding:5px 8px;cursor:pointer;font-size:.78rem;font-weight:700;color:rgba(255,255,255,.85);white-space:nowrap;line-height:1;}
+    .lang-toggle:hover{background:rgba(255,255,255,.15);}
+    .lang-pill{padding:2px 6px;border-radius:10px;transition:background .2s,color .2s;}
+    .lang-pill.lang-active{background:rgba(255,255,255,.9);color:#1a1a1a;}
+    .lang-pill.lang-inactive{color:rgba(255,255,255,.5);}
   </style>
 </head>
 <body>
@@ -64,16 +71,16 @@
   <ul class="nav-links">
     <li><a href="#">Home</a></li><li><a href="#">Services</a></li><li><a href="#">Bridal</a></li><li><a href="#">Gallery</a></li>
   </ul>
-  <a href="../pages/book.html?category=salon&business=Shringar+Beauty+Parlour" class="nav-btn">Appointment Lo</a>
+  <button class="lang-toggle" onclick="toggleLanguage()"><span class="lang-pill lang-active">EN</span><span class="lang-pill lang-inactive">हिं</span></button><a href="../pages/book.html?category=salon&business=Shringar+Beauty+Parlour" class="nav-btn" data-i18n="t.sal.nav.btn">Book Appointment</a>
 </nav>
 
 <div class="hero">
   <div class="hero-text">
-    <span class="badge">💅 Boring Road, Patna · Bihar ki #1 Beauty Parlour Since 2008</span>
-    <h1>Sundar Dikhna Aapka Haq Hai — Shringar Beauty Parlour</h1>
-    <p>Hair, skin, nails, bridal makeup — sab kuch ek jagah. Patna ki trusted beauty parlour with certified stylists. 15+ saal ka experience.</p>
+    <span class="badge" data-i18n="t.sal.hero.badge">💅 Boring Road, Patna · Bihar's #1 Beauty Parlour Since 2008</span>
+    <h1 data-i18n="t.sal.hero.h1">Looking Beautiful is Your Right — Shringar Beauty Parlour</h1>
+    <p data-i18n="t.sal.hero.p">Hair, skin, nails, bridal makeup — everything in one place. Patna's trusted beauty parlour with certified stylists. 15+ years of experience.</p>
     <div class="hero-btns">
-      <a href="../pages/book.html?category=salon&business=Shringar+Beauty+Parlour" class="btn-w">📅 Appointment Book Karein</a>
+      <a href="../pages/book.html?category=salon&business=Shringar+Beauty+Parlour" class="btn-w" data-i18n="t.sal.hero.btn1">📅 Book Appointment</a>
       <a href="tel:9876533333" class="btn-wh">📞 Call: 98765-33333</a>
     </div>
   </div>
@@ -94,7 +101,7 @@
 </div>
 
 <section class="services">
-  <div class="section-title">Hamari Beauty Services</div>
+  <div class="section-title" data-i18n="t.sal.svc.title">Our Beauty Services</div>
   <div class="section-sub">Certified stylists, premium products, guaranteed results</div>
   <div class="svc-grid">
     <div class="svc-card"><div class="sc-icon">✂️</div><div class="sc-name">Haircut & Styling</div><div class="sc-price">₹ 300 onwards</div></div>
@@ -112,8 +119,8 @@
   <div class="bridal-card">
     <div class="bridal-text">
       <h2>👰 Bridal Package — Special Bihar Weddings</h2>
-      <p>Aapki shaadi special hai. Hamare bridal makeup artists ne 500+ brides ko taiyaar kiya hai. Mehendi, sangeet, wedding — teeno ke liye special packages.</p>
-      <a href="../pages/book.html?category=salon&business=Shringar+Bridal+Package" class="bridal-btn">💍 Bridal Booking Karein</a>
+      <p data-i18n="t.sal.bridal.p">Your wedding is special. Our bridal makeup artists have prepared 500+ brides. Mehendi, sangeet, wedding — special packages for all three.</p>
+      <a href="../pages/book.html?category=salon&business=Shringar+Bridal+Package" class="bridal-btn" data-i18n="t.sal.bridal.btn">💍 Book Bridal Package</a>
       <div class="bridal-features">
         <div class="bf">✅ Trial makeup included</div>
         <div class="bf">✅ Home visit available</div>
@@ -125,7 +132,7 @@
 </section>
 
 <section class="stylists">
-  <div class="section-title">Hamare Expert Stylists</div>
+  <div class="section-title" data-i18n="t.sal.styl.title">Our Expert Stylists</div>
   <div class="stylist-grid">
     <div class="stcard"><div class="st-avatar">💄</div><div class="st-name">Reena Kumari</div><div class="st-spec">Head Stylist · Bridal & Hair Expert</div></div>
     <div class="stcard"><div class="st-avatar">💅</div><div class="st-name">Anjali Singh</div><div class="st-spec">Nail Art & Skin Specialist</div></div>
@@ -134,8 +141,8 @@
 </section>
 
 <div class="book-s">
-  <h2>Appointment Book Karein — Abhi</h2>
-  <p>Online booking available 24/7. Koi waiting line nahi.</p>
+  <h2 data-i18n="t.sal.book.h2">Book Your Appointment — Now</h2>
+  <p data-i18n="t.sal.book.p">Online booking available 24/7. No waiting.</p>
   <a href="../pages/book.html?category=salon&business=Shringar+Beauty+Parlour" class="book-btn">💅 Book My Appointment</a>
   <div style="margin-top:18px;display:flex;justify-content:center;gap:14px;flex-wrap:wrap;">
     <span style="background:rgba(255,255,255,.15);padding:6px 14px;border-radius:100px;font-size:.78rem;">📍 Boring Road, Patna</span>
@@ -144,5 +151,6 @@
   </div>
 </div>
 <footer>© 2026 Shringar Beauty Parlour · Boring Road, Patna — Website by MGlobal</footer>
+<script src="../js/i18n.js"></script>
 </body>
 </html>

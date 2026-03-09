@@ -45,6 +45,13 @@
     .book-btn{background:#f59e0b;color:#1a1a1a;padding:13px 30px;border-radius:8px;font-weight:800;font-size:.95rem;text-decoration:none;display:inline-block;}
     footer{background:#0a0a0a;color:#94a3b8;text-align:center;padding:18px;font-size:.8rem;}
     @media(max-width:700px){.grid-4{grid-template-columns:1fr 1fr;}.why-grid{grid-template-columns:1fr;}.hero{flex-direction:column;}}
+
+    /* ── Language Toggle ── */
+    .lang-toggle{display:inline-flex;align-items:center;gap:2px;background:transparent;border:1.5px solid rgba(255,255,255,.4);border-radius:20px;padding:5px 8px;cursor:pointer;font-size:.78rem;font-weight:700;color:rgba(255,255,255,.85);white-space:nowrap;line-height:1;}
+    .lang-toggle:hover{background:rgba(255,255,255,.15);}
+    .lang-pill{padding:2px 6px;border-radius:10px;transition:background .2s,color .2s;}
+    .lang-pill.lang-active{background:rgba(255,255,255,.9);color:#1a1a1a;}
+    .lang-pill.lang-inactive{color:rgba(255,255,255,.5);}
   </style>
 </head>
 <body>
@@ -53,16 +60,16 @@
   <ul class="nav-links">
     <li><a href="#">Home</a></li><li><a href="#">Services</a></li><li><a href="#">Projects</a></li><li><a href="#">Contact</a></li>
   </ul>
-  <a href="../pages/book.html?category=electrician&business=Ravi+Electricals+Patna" class="nav-btn">Free Quote Lo</a>
+  <button class="lang-toggle" onclick="toggleLanguage()"><span class="lang-pill lang-active">EN</span><span class="lang-pill lang-inactive">हिं</span></button><a href="../pages/book.html?category=electrician&business=Ravi+Electricals+Patna" class="nav-btn" data-i18n="t.elec.nav.btn">Get Free Quote</a>
 </nav>
 
 <div class="hero">
   <div class="hero-text">
     <span class="badge">⚡ Kankarbagh, Patna · Licensed & Insured</span>
-    <h1>Patna ka Sabse Bharosemand Electrician</h1>
-    <p>Ghar, dukaan, ya factory — bijli ka koi bhi kaam Ravi Electricals se karo. Same-day service available. 500+ satisfied customers.</p>
+    <h1 data-i18n="t.elec.hero.h1">Patna's Most Trusted Electrician</h1>
+    <p data-i18n="t.elec.hero.p">Home, shop, or factory — any electrical work, do it with Ravi Electricals. Same-day service available. 500+ satisfied customers.</p>
     <div class="hero-btns">
-      <a href="../pages/book.html?category=electrician&business=Ravi+Electricals+Patna" class="btn-y">📋 Free Quote Lo</a>
+      <a href="../pages/book.html?category=electrician&business=Ravi+Electricals+Patna" class="btn-y" data-i18n="t.elec.hero.btn1">📋 Get Free Quote</a>
       <a href="tel:9876543210" class="btn-wh">📞 Call: 98765-43210</a>
     </div>
     <div class="trust-row">
@@ -82,11 +89,11 @@
 </div>
 
 <section class="services">
-  <div class="section-title">Hamari Electrical Services</div>
-  <div class="section-sub">Residential se leke commercial tak — sab kuch</div>
+  <div class="section-title" data-i18n="t.elec.svc.title">Our Electrical Services</div>
+  <div class="section-sub" data-i18n="t.elec.svc.sub">From residential to commercial — everything</div>
   <div class="grid-4">
-    <div class="scard"><div class="sc-icon">🔌</div><div class="sc-name">New Wiring</div><div class="sc-desc">Ghar ya dukaan ki nayi wiring</div></div>
-    <div class="scard"><div class="sc-icon">🔧</div><div class="sc-name">Fault Repair</div><div class="sc-desc">Koi bhi bijli ki problem theek karein</div></div>
+    <div class="scard"><div class="sc-icon">🔌</div><div class="sc-name">New Wiring</div><div class="sc-desc" data-i18n="t.elec.svc.1">New wiring for home or shop</div></div>
+    <div class="scard"><div class="sc-icon">🔧</div><div class="sc-name">Fault Repair</div><div class="sc-desc" data-i18n="t.elec.svc.2">Fix any electrical problem</div></div>
     <div class="scard"><div class="sc-icon">💡</div><div class="sc-name">LED Lighting</div><div class="sc-desc">Energy-saving LED installation</div></div>
     <div class="scard"><div class="sc-icon">❄️</div><div class="sc-name">AC Wiring</div><div class="sc-desc">AC, inverter, UPS wiring</div></div>
     <div class="scard"><div class="sc-icon">🔒</div><div class="sc-name">CCTV / Security</div><div class="sc-desc">Camera installation & wiring</div></div>
@@ -97,21 +104,21 @@
 </section>
 
 <section class="why">
-  <div class="section-title">Ravi Electricals Kyun Chunein?</div>
+  <div class="section-title" data-i18n="t.elec.why.title">Why Choose Ravi Electricals?</div>
   <div class="why-grid">
-    <div class="why-card"><div class="wc-title">⚡ Same-Day Service</div><div class="wc-desc">Emergency kaam ke liye usi din available hain. Patna ke kisi bhi area mein.</div></div>
-    <div class="why-card"><div class="wc-title">✅ Licensed Electrician</div><div class="wc-desc">Fully licensed aur insured. Aapka ghar safe hands mein hai.</div></div>
-    <div class="why-card"><div class="wc-title">💰 Fair Pricing</div><div class="wc-desc">Koi hidden charge nahi. Quote pehle, kaam baad mein.</div></div>
-    <div class="why-card"><div class="wc-title">📍 Patna Expertise</div><div class="wc-desc">15+ saal Patna mein kaam kiya hai. Local requirements ki poori samajh hai.</div></div>
-    <div class="why-card"><div class="wc-title">🔧 Quality Work</div><div class="wc-desc">ISI marked materials, proper earthing, aur long-lasting solutions.</div></div>
-    <div class="why-card"><div class="wc-title">📞 After-Service Support</div><div class="wc-desc">Kaam ke baad bhi helpline. Koi bhi problem — call karein.</div></div>
+    <div class="why-card"><div class="wc-title">⚡ Same-Day Service</div><div class="wc-desc" data-i18n="t.elec.why.1">Available same day for emergencies. Any area in Patna.</div></div>
+    <div class="why-card"><div class="wc-title">✅ Licensed Electrician</div><div class="wc-desc" data-i18n="t.elec.why.2">Fully licensed and insured. Your home is in safe hands.</div></div>
+    <div class="why-card"><div class="wc-title">💰 Fair Pricing</div><div class="wc-desc" data-i18n="t.elec.why.3">No hidden charges. Quote first, work after.</div></div>
+    <div class="why-card"><div class="wc-title">📍 Patna Expertise</div><div class="wc-desc" data-i18n="t.elec.why.4">15+ years working in Patna. Full understanding of local requirements.</div></div>
+    <div class="why-card"><div class="wc-title">🔧 Quality Work</div><div class="wc-desc" data-i18n="t.elec.why.5">ISI marked materials, proper earthing, and long-lasting solutions.</div></div>
+    <div class="why-card"><div class="wc-title">📞 After-Service Support</div><div class="wc-desc" data-i18n="t.elec.why.6">Helpline after the work too. Any problem — call us.</div></div>
   </div>
 </section>
 
 <div class="book-s">
-  <h2>Free Quote Chahiye? Abhi Book Karein</h2>
-  <p>Form bharo, hum 2 ghante mein call karenge aur site visit karenge.</p>
-  <a href="../pages/book.html?category=electrician&business=Ravi+Electricals+Patna" class="book-btn">📋 Free Quote Book Karein</a>
+  <h2 data-i18n="t.elec.book.h2">Need a Free Quote? Book Now</h2>
+  <p data-i18n="t.elec.book.p">Fill the form, we'll call within 2 hours and do a site visit.</p>
+  <a href="../pages/book.html?category=electrician&business=Ravi+Electricals+Patna" class="book-btn" data-i18n="t.elec.book.btn">📋 Book Free Quote</a>
   <div style="margin-top:18px;display:flex;justify-content:center;gap:14px;flex-wrap:wrap;">
     <span style="background:rgba(255,255,255,.1);padding:6px 14px;border-radius:100px;font-size:.78rem;">📍 Kankarbagh, Patna</span>
     <span style="background:rgba(255,255,255,.1);padding:6px 14px;border-radius:100px;font-size:.78rem;">📞 98765-43210</span>
@@ -119,5 +126,6 @@
   </div>
 </div>
 <footer>© 2026 Ravi Electricals · Kankarbagh, Patna — Website by MGlobal</footer>
+<script src="../js/i18n.js"></script>
 </body>
 </html>

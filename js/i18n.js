@@ -389,8 +389,260 @@ const TRANSLATIONS = {
     'book.next.2':      'Free demo website aapko dikhayenge.',
     'book.next.3':      'Apni saari requests track karein',
     'book.next.dashboard': 'Dashboard',
-  }
+  },
+
+  /* ────────────── HINGLISH — TEMPLATE-SPECIFIC ────────────── */
+  /* These keys are only used in the 8 template pages */
+
 };
+
+// ── Merge template-specific translations ──
+(function() {
+  const tEn = {
+    // ═══ HEALTHCARE ═══
+    't.hc.hero.h1':    'Patna\'s Trusted Doctor — Dr. Ramesh Kumar',
+    't.hc.hero.p':     '20+ years of experience. General medicine, fever, diabetes, BP, and child health. Trust us with your family\'s health.',
+    't.hc.hero.card':  '📊 Results After Website',
+    't.hc.hero.btn':   '📅 Book Appointment',
+    't.hc.svc.title':  'Our Services',
+    't.hc.svc.sub':    'Complete family healthcare in Patna',
+    't.hc.svc.1':      'Fever, cold and flu treatment',
+    't.hc.svc.3':      'Sugar level control and diet guidance',
+    't.hc.svc.4':      'Child health, vaccination',
+    't.hc.svc.6':      'Tooth pain, cleaning, filling',
+    't.hc.svc.7':      'Eye checkup, spectacle prescription',
+    't.hc.svc.8':      'Medicines available directly from clinic',
+    't.hc.doc.title':  'Our Doctors',
+    't.hc.doc.sub':    'The best of experience and expertise',
+    't.hc.book.h2':    'Book Your Appointment Today',
+    't.hc.book.p':     'Online booking available 24/7. No waiting.',
+    't.hc.nav.btn':    'Book Appointment',
+
+    // ═══ ELECTRICIAN ═══
+    't.elec.hero.h1':   'Patna\'s Most Trusted Electrician',
+    't.elec.hero.p':    'Home, shop, or factory — any electrical work, do it with Ravi Electricals. Same-day service available. 500+ satisfied customers.',
+    't.elec.nav.btn':   'Get Free Quote',
+    't.elec.hero.btn1': '📋 Get Free Quote',
+    't.elec.svc.title': 'Our Electrical Services',
+    't.elec.svc.sub':   'From residential to commercial — everything',
+    't.elec.svc.1':     'New wiring for home or shop',
+    't.elec.svc.2':     'Fix any electrical problem',
+    't.elec.why.title': 'Why Choose Ravi Electricals?',
+    't.elec.why.1':     'Available same day for emergencies. Any area in Patna.',
+    't.elec.why.2':     'Fully licensed and insured. Your home is in safe hands.',
+    't.elec.why.3':     'No hidden charges. Quote first, work after.',
+    't.elec.why.4':     '15+ years working in Patna. Full understanding of local requirements.',
+    't.elec.why.5':     'ISI marked materials, proper earthing, and long-lasting solutions.',
+    't.elec.why.6':     'Helpline after the work too. Any problem — call us.',
+    't.elec.book.h2':   'Need a Free Quote? Book Now',
+    't.elec.book.p':    'Fill the form, we\'ll call within 2 hours and do a site visit.',
+    't.elec.book.btn':  '📋 Book Free Quote',
+
+    // ═══ RESTAURANT ═══
+    't.rest.hero.h1':   'Authentic Bihar Flavour — Patna Rasoi',
+    't.rest.hero.p':    'Litti Chokha, Dal Puri, Sattu Paratha, Makhana Kheer — real home-cooked Bihari food. Patna\'s most beloved restaurant.',
+    't.rest.nav.btn':   'Reserve Table',
+    't.rest.hero.btn1': '🪑 Reserve a Table',
+    't.rest.stats.1':   'on Bailey Road',
+    't.rest.menu.title':'Our Menu',
+    't.rest.menu.sub':  'Pure Bihari recipes, made with homestyle spices',
+    't.rest.sp1.p':     '4 people — Bihari Thali + Litti Chokha + Makhana Kheer. Only ₹599. Reservation required.',
+    't.rest.sp2.p':     'Free delivery to Bailey Road, Boring Road, Kankarbagh, Fraser Road on orders above ₹399.',
+    't.rest.sp3.p':     'Book the private dining room. Special arrangements for 10+ people.',
+    't.rest.sp4.p':     'Catering for office lunches, events, and functions. Per-head pricing available.',
+    't.rest.book.h2':   'Reserve a Table — Now',
+    't.rest.book.p':    'Reserve online, skip the walk-in wait.',
+
+    // ═══ RETAIL ═══
+    't.ret.hero.badge': '🛍 Patna City · Bihar\'s Shopping Destination Since 1990',
+    't.ret.hero.h1':    'Bihar\'s Best Sarees & Clothing — Maurya Emporium',
+    't.ret.hero.p':     'Banarasi saree, silk, cotton, lehenga — everything available. Stores in Patna City and Boring Road. Home delivery across Bihar.',
+    't.ret.hero.btn1':  '🛒 Order Online',
+    't.ret.cat.title':  'Our Categories',
+    't.ret.cat.sub':    'Patna\'s largest textile collection',
+    't.ret.del.h3':     '🚚 Bihar-Wide Home Delivery',
+    't.ret.del.p':      'Delivery to Patna, Muzaffarpur, Gaya, Bhagalpur, Darbhanga — all of Bihar. Free delivery above ₹999.',
+
+    // ═══ GYM ═══
+    't.gym.hero.h1':    'Transform Your Body — With Patna\'s Best',
+    't.gym.hero.p':     'Chandragupta Fitness — Patna\'s most complete gym. Personal training, yoga, zumba, and boxing. 800+ members. Expert trainers.',
+    't.gym.hero.btn1':  '🆓 Book Free Trial',
+    't.gym.stats.4':    'on Fraser Road',
+    't.gym.cls.title':  'Our Classes',
+    't.gym.cls.sub':    'Choose according to your fitness goal',
+    't.gym.mem.sub':    'Choose the right plan for your budget and goal',
+    't.gym.cls.incl':   'Included in membership',
+    't.gym.trn.title':  'Our Expert Trainers',
+    't.gym.book.h2':    'Want a Free Trial?',
+    't.gym.book.p':     'Book a free trial session. No commitment.',
+    't.gym.book.btn':   '🆓 Book Free Trial',
+
+    // ═══ SALON ═══
+    't.sal.hero.badge': '💅 Boring Road, Patna · Bihar\'s #1 Beauty Parlour Since 2008',
+    't.sal.hero.h1':    'Looking Beautiful is Your Right — Shringar Beauty Parlour',
+    't.sal.hero.p':     'Hair, skin, nails, bridal makeup — everything in one place. Patna\'s trusted beauty parlour with certified stylists. 15+ years of experience.',
+    't.sal.nav.btn':    'Book Appointment',
+    't.sal.hero.btn1':  '📅 Book Appointment',
+    't.sal.svc.title':  'Our Beauty Services',
+    't.sal.bridal.p':   'Your wedding is special. Our bridal makeup artists have prepared 500+ brides. Mehendi, sangeet, wedding — special packages for all three.',
+    't.sal.bridal.btn': '💍 Book Bridal Package',
+    't.sal.styl.title': 'Our Expert Stylists',
+    't.sal.book.h2':    'Book Your Appointment — Now',
+    't.sal.book.p':     'Online booking available 24/7. No waiting.',
+
+    // ═══ REAL ESTATE ═══
+    't.re.hero.h1':     'Find Your Home in Patna — Bihar Griha Properties',
+    't.re.hero.p':      'Flats, plots, commercial spaces — in every area of Patna. 10+ years of trust. 500+ properties sold. Expert guidance at every step.',
+    't.re.hero.btn1':   '📅 Book Free Site Visit',
+    't.re.stats.2':     'in Patna',
+    't.re.book.h2':     'Book a Free Site Visit',
+    't.re.book.p':      'We\'ll personally show you the property — no commitment.',
+    't.re.book.btn':    '📅 Book Free Visit',
+
+    // ═══ LAW ═══
+    't.law.hero.h1':    'Fighting for Your Rights — Sharma & Associates',
+    't.law.hero.p':     'Property dispute or family matter, criminal case or corporate — experienced advocates at Patna High Court are with you. 25+ years of legal experience.',
+    't.law.hero.btn1':  '🆓 Book Free Consultation',
+    't.law.hero.card':  '📊 Results After Website',
+    't.law.prac.title': 'Our Practice Areas',
+    't.law.prac.sub':   'Expertise in Bihar and Jharkhand courts',
+    't.law.adv.title':  'Our Advocates',
+    't.law.why.title':  'Why Sharma & Associates?',
+    't.law.why.1':      'First meeting completely free. Discuss your case, understand the right path.',
+    't.law.why.2':      '25+ years of practice at Patna High Court. Deep understanding of Bihar\'s legal system.',
+    't.law.why.3':      'Not in legal jargon, explained in plain language. No confusion.',
+    't.law.why.4':      'Case status on WhatsApp. You\'ll never be left in the dark.',
+    't.law.why.5':      'Clear pricing upfront. No hidden charges. Written agreement provided.',
+    't.law.why.6':      '1000+ cases. 95% success rate. Among Bihar\'s top lawyers.',
+    't.law.book.h2':    'Book Free Legal Consultation',
+    't.law.book.p':     'Tell us your case — we\'ll show you the right path. No commitment.',
+    't.law.book.btn':   '🆓 Book Free Consultation',
+  };
+
+  const tHi = {
+    // ═══ HEALTHCARE ═══
+    't.hc.hero.h1':    'Patna ke Bharose ka Doctor — Dr. Ramesh Kumar',
+    't.hc.hero.p':     '20+ saal ka anubhav. General medicine, fever, diabetes, BP, aur child health. Apne parivaar ki sehat humpar chhodein.',
+    't.hc.hero.card':  '📊 Website ke Baad Results',
+    't.hc.hero.btn':   '📅 Appointment Book Karein',
+    't.hc.svc.title':  'Hamari Services',
+    't.hc.svc.sub':    'Hum provide karte hain complete family healthcare — Patna mein',
+    't.hc.svc.1':      'Bukhaar, khaansi, sard-jukaam ka ilaaj',
+    't.hc.svc.3':      'Sugar level control aur diet guidance',
+    't.hc.svc.4':      'Bacchon ki sehat, vaccination',
+    't.hc.svc.6':      'Daant ka dard, cleaning, filling',
+    't.hc.svc.7':      'Aankhon ki jaanch, chasma prescription',
+    't.hc.svc.8':      'Dawai seedha clinic se milegi',
+    't.hc.doc.title':  'Hamare Doctors',
+    't.hc.doc.sub':    'Experience aur expertise ka best combination',
+    't.hc.book.h2':    'Aaj Hi Appointment Book Karein',
+    't.hc.book.p':     'Online booking 24/7 available hai. Koi waiting nahi.',
+    't.hc.nav.btn':    'Appointment Book Karein',
+
+    // ═══ ELECTRICIAN ═══
+    't.elec.hero.h1':   'Patna ka Sabse Bharosemand Electrician',
+    't.elec.hero.p':    'Ghar, dukaan, ya factory — bijli ka koi bhi kaam Ravi Electricals se karo. Same-day service available. 500+ satisfied customers.',
+    't.elec.nav.btn':   'Free Quote Lo',
+    't.elec.hero.btn1': '📋 Free Quote Lo',
+    't.elec.svc.title': 'Hamari Electrical Services',
+    't.elec.svc.sub':   'Residential se leke commercial tak — sab kuch',
+    't.elec.svc.1':     'Ghar ya dukaan ki nayi wiring',
+    't.elec.svc.2':     'Koi bhi bijli ki problem theek karein',
+    't.elec.why.title': 'Ravi Electricals Kyun Chunein?',
+    't.elec.why.1':     'Emergency kaam ke liye usi din available hain. Patna ke kisi bhi area mein.',
+    't.elec.why.2':     'Fully licensed aur insured. Aapka ghar safe hands mein hai.',
+    't.elec.why.3':     'Koi hidden charge nahi. Quote pehle, kaam baad mein.',
+    't.elec.why.4':     '15+ saal Patna mein kaam kiya hai. Local requirements ki poori samajh hai.',
+    't.elec.why.5':     'ISI marked materials, proper earthing, aur long-lasting solutions.',
+    't.elec.why.6':     'Kaam ke baad bhi helpline. Koi bhi problem — call karein.',
+    't.elec.book.h2':   'Free Quote Chahiye? Abhi Book Karein',
+    't.elec.book.p':    'Form bharo, hum 2 ghante mein call karenge aur site visit karenge.',
+    't.elec.book.btn':  '📋 Free Quote Book Karein',
+
+    // ═══ RESTAURANT ═══
+    't.rest.hero.h1':   'Asli Bihar ka Swad — Patna Rasoi',
+    't.rest.hero.p':    'Litti Chokha, Dal Puri, Sattu Paratha, Makhana Kheer — Bihar ka asli ghar ka khaana. Patna ka sabse beloved restaurant.',
+    't.rest.nav.btn':   'Table Reserve Karein',
+    't.rest.hero.btn1': '🪑 Table Reserve Karein',
+    't.rest.stats.1':   'Bailey Road pe',
+    't.rest.menu.title':'Hamara Menu',
+    't.rest.menu.sub':  'Pure Bihari recipes, ghar ke masalon se bane',
+    't.rest.sp1.p':     '4 log — Bihari Thali + Litti Chokha + Makhana Kheer. Sirf ₹ 599. Reservation zaroori hai.',
+    't.rest.sp2.p':     'Bailey Road, Boring Road, Kankarbagh, Fraser Road tak free delivery ₹399 ke order par.',
+    't.rest.sp3.p':     'Private dining room book karein. 10+ log ke liye special arrangements available.',
+    't.rest.sp4.p':     'Office lunches, events, aur functions ke liye catering. Per-head pricing available.',
+    't.rest.book.h2':   'Table Reserve Karein — Abhi',
+    't.rest.book.p':    'Online reservation kar lo, walk-in wait se bachenge.',
+
+    // ═══ RETAIL ═══
+    't.ret.hero.badge': '🛍 Patna City · Bihar ka Shopping Destination Since 1990',
+    't.ret.hero.h1':    'Bihar ki Best Sarees & Clothing — Maurya Emporium',
+    't.ret.hero.p':     'Banarasi saree, silk, cotton, lehenga — sab kuch milega. Patna City aur Boring Road pe hamare stores. Bihar bhar mein home delivery.',
+    't.ret.hero.btn1':  '🛒 Online Order Karein',
+    't.ret.cat.title':  'Hamari Categories',
+    't.ret.cat.sub':    'Patna ka sabse bada textile collection',
+    't.ret.del.h3':     '🚚 Bihar-Wide Home Delivery',
+    't.ret.del.p':      'Patna, Muzaffarpur, Gaya, Bhagalpur, Darbhanga — poore Bihar mein delivery. ₹999 se upar free delivery.',
+
+    // ═══ GYM ═══
+    't.gym.hero.h1':    'Transform Karo Apni Body — Patna Ke Sath',
+    't.gym.hero.p':     'Chandragupta Fitness — Patna ka sabse complete gym. Personal training, yoga, zumba, aur boxing. 800+ members. Expert trainers.',
+    't.gym.hero.btn1':  '🆓 Free Trial Book Karein',
+    't.gym.stats.4':    'Fraser Road pe',
+    't.gym.cls.title':  'Hamare Classes',
+    't.gym.cls.sub':    'Apni fitness goal ke according choose karein',
+    't.gym.mem.sub':    'Apne budget aur goal ke liye sahi plan chunein',
+    't.gym.cls.incl':   'Membership mein included',
+    't.gym.trn.title':  'Hamare Expert Trainers',
+    't.gym.book.h2':    'Free Trial Lena Chahte Hain?',
+    't.gym.book.p':     'Ek free trial session book karein. Koi commitment nahi.',
+    't.gym.book.btn':   '🆓 Free Trial Book Karein',
+
+    // ═══ SALON ═══
+    't.sal.hero.badge': '💅 Boring Road, Patna · Bihar ki #1 Beauty Parlour Since 2008',
+    't.sal.hero.h1':    'Sundar Dikhna Aapka Haq Hai — Shringar Beauty Parlour',
+    't.sal.hero.p':     'Hair, skin, nails, bridal makeup — sab kuch ek jagah. Patna ki trusted beauty parlour with certified stylists. 15+ saal ka experience.',
+    't.sal.nav.btn':    'Appointment Lo',
+    't.sal.hero.btn1':  '📅 Appointment Book Karein',
+    't.sal.svc.title':  'Hamari Beauty Services',
+    't.sal.bridal.p':   'Aapki shaadi special hai. Hamare bridal makeup artists ne 500+ brides ko taiyaar kiya hai. Mehendi, sangeet, wedding — teeno ke liye special packages.',
+    't.sal.bridal.btn': '💍 Bridal Booking Karein',
+    't.sal.styl.title': 'Hamare Expert Stylists',
+    't.sal.book.h2':    'Appointment Book Karein — Abhi',
+    't.sal.book.p':     'Online booking available 24/7. Koi waiting line nahi.',
+
+    // ═══ REAL ESTATE ═══
+    't.re.hero.h1':     'Patna Mein Apna Ghar Dhundho — Bihar Griha Properties',
+    't.re.hero.p':      'Flats, plots, commercial spaces — Patna ke har area mein. 10+ saal ka trust. 500+ properties sold. Expert guidance at every step.',
+    't.re.hero.btn1':   '📅 Free Site Visit Book Karein',
+    't.re.stats.2':     'Patna mein',
+    't.re.book.h2':     'Free Site Visit Book Karein',
+    't.re.book.p':      'Hum aapko personally property dikhayenge — koi commitment nahi.',
+    't.re.book.btn':    '📅 Free Visit Book Karein',
+
+    // ═══ LAW ═══
+    't.law.hero.h1':    'Aapke Haq Ki Ladaai Mein — Sharma & Associates',
+    't.law.hero.p':     'Property dispute ho ya family matter, criminal case ho ya corporate — Patna High Court ke anubhavi advocates aapke saath hain. 25+ saal ka legal experience.',
+    't.law.hero.btn1':  '🆓 Free Consultation Book Karein',
+    't.law.hero.card':  '📊 Website ke Baad Results',
+    't.law.prac.title': 'Hamare Practice Areas',
+    't.law.prac.sub':   'Bihar aur Jharkhand ke courts mein expertise',
+    't.law.adv.title':  'Hamare Advocates',
+    't.law.why.title':  'Sharma & Associates Kyun?',
+    't.law.why.1':      'Pehli meeting bilkul free. Apna case discuss karein, sahi raah samjhein.',
+    't.law.why.2':      '25+ saal Patna High Court mein practice. Bihar ki legal system ki gehri samajh.',
+    't.law.why.3':      'Legal jargon mein nahi, sadhi Hindi mein samjhaate hain. Koi confusion nahi.',
+    't.law.why.4':      'Case ka status WhatsApp pe milega. Kabhi andheron mein nahi rahenge.',
+    't.law.why.5':      'Pehle se clear pricing. Koi hidden charges nahi. Written agreement milega.',
+    't.law.why.6':      '1000+ cases. 95% success rate. Bihar ke top lawyers mein shamil.',
+    't.law.book.h2':    'Free Legal Consultation Book Karein',
+    't.law.book.p':     'Apna case hume batao — hum aapko sahi raah dikhayenge. Koi commitment nahi.',
+    't.law.book.btn':   '🆓 Free Consultation Book Karein',
+  };
+
+  Object.assign(TRANSLATIONS.en, tEn);
+  Object.assign(TRANSLATIONS.hi, tHi);
+})();
 
 /* ── Core i18n engine ── */
 
