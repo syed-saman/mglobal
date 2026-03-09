@@ -88,8 +88,35 @@ nav.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,.08); }
 }
 .nav-book-btn:hover { background: #fbbf24; transform: translateY(-1px); }
 
+/* ── LANGUAGE TOGGLE ── */
+.lang-toggle {
+  display: inline-flex; align-items: center; gap: 2px;
+  background: transparent;
+  border: 1.5px solid var(--border);
+  border-radius: 20px; padding: 5px 8px;
+  cursor: pointer; font-size: .78rem; font-weight: 700;
+  transition: border-color .2s, background .2s;
+  color: var(--text); white-space: nowrap;
+  line-height: 1;
+}
+.lang-toggle:hover {
+  border-color: var(--primary);
+  background: var(--primary-light);
+}
+.lang-pill {
+  padding: 2px 6px; border-radius: 10px;
+  transition: background .2s, color .2s;
+}
+.lang-pill.lang-active {
+  background: var(--primary); color: #fff;
+}
+.lang-pill.lang-inactive {
+  color: var(--muted);
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
   .nav-links { display: none; }
   nav { padding: 0 4%; }
+  .lang-toggle { font-size: .72rem; padding: 4px 7px; }
 }

@@ -67,21 +67,24 @@
 <nav>
   <a class="logo" href="index.html">M<span>Global</span></a>
   <ul class="nav-links">
-    <li><a href="#templates">Templates</a></li>
-    <li><a href="#how">Process</a></li>
-    <li><a href="#testimonials">Results</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#templates" data-i18n="nav.templates">Templates</a></li>
+    <li><a href="#how" data-i18n="nav.process">Process</a></li>
+    <li><a href="#testimonials" data-i18n="nav.results">Results</a></li>
+    <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
   </ul>
   <div class="nav-right">
-    <a href="pages/book.html" class="nav-book-btn">📅 Book a Call</a>
-    <a href="pages/login.html" id="nav-login-btn">🔐 Login</a>
+    <button class="lang-toggle" onclick="toggleLanguage()" title="Change Language">
+      <span class="lang-pill lang-active">EN</span><span class="lang-pill lang-inactive">हिं</span>
+    </button>
+    <a href="pages/book.html" class="nav-book-btn" data-i18n="nav.book">📅 Book a Call</a>
+    <a href="pages/login.html" id="nav-login-btn" data-i18n="nav.login">🔐 Login</a>
     <div id="nav-user-area">
       <img id="nav-user-photo" src="" alt="User"/>
       <span id="nav-user-name"></span>
       <div class="user-dropdown">
-        <a href="pages/dashboard.html">📅 My Appointments</a>
+        <a href="pages/dashboard.html" data-i18n="nav.dashboard">📅 My Appointments</a>
         <div class="divider"></div>
-        <a href="#" class="sign-out" onclick="signOut()">🚪 Sign Out</a>
+        <a href="#" class="sign-out" onclick="signOut()" data-i18n="nav.signout">🚪 Sign Out</a>
       </div>
     </div>
   </div>
@@ -92,12 +95,12 @@
   <div class="orb orb-1"></div>
   <div class="orb orb-2"></div>
   <div class="hero-text">
-    <span class="hero-badge">🌐 Bihar's #1 Web Development Agency</span>
-    <h1>Apna Business <span class="highlight">Online Laao</span> — Bihar Mein</h1>
-    <p>MGlobal banata hai professional websites jo aapke customers attract karein, traffic badhayein, aur sales increase karein. Patna se poore Bihar tak.</p>
+    <span class="hero-badge" data-i18n="hero.badge">🌐 Bihar's #1 Web Development Agency</span>
+    <h1 data-i18n-html="hero.h1">Bring Your Business <span class="highlight">Online</span> — In Bihar</h1>
+    <p data-i18n="hero.p">MGlobal builds professional websites that attract customers, boost traffic, and increase sales. Serving Patna and all of Bihar.</p>
     <div class="hero-btns">
-      <a href="pages/book.html" class="btn btn-primary">📅 Free Consultation Book Karein</a>
-      <a href="#templates" class="btn btn-outline">Templates Dekho →</a>
+      <a href="pages/book.html" class="btn btn-primary" data-i18n="hero.btn1">📅 Book Free Consultation</a>
+      <a href="#templates" class="btn btn-outline" data-i18n="hero.btn2">See Templates →</a>
     </div>
   </div>
   <div class="hero-visual">
@@ -128,30 +131,30 @@
 
 <!-- ── STATS BAND ── -->
 <div class="stats-band">
-  <div class="stat-item reveal"><div class="num count-up" data-target="250" data-suffix="+">0+</div><div class="lbl">Websites Delivered</div></div>
-  <div class="stat-item reveal"><div class="num count-up" data-target="195" data-prefix="+" data-suffix="%">0%</div><div class="lbl">Avg. Traffic Growth</div></div>
-  <div class="stat-item reveal"><div class="num count-up" data-target="140" data-prefix="+" data-suffix="%">0%</div><div class="lbl">Avg. Sales Growth</div></div>
-  <div class="stat-item reveal"><div class="num count-up" data-target="12">0</div><div class="lbl">Industries Served</div></div>
-  <div class="stat-item reveal"><div class="num count-up" data-target="98" data-suffix="%">0%</div><div class="lbl">Client Satisfaction</div></div>
+  <div class="stat-item reveal"><div class="num count-up" data-target="250" data-suffix="+">0+</div><div class="lbl" data-i18n="stats.lbl1">Websites Delivered</div></div>
+  <div class="stat-item reveal"><div class="num count-up" data-target="195" data-prefix="+" data-suffix="%">0%</div><div class="lbl" data-i18n="stats.lbl2">Avg. Traffic Growth</div></div>
+  <div class="stat-item reveal"><div class="num count-up" data-target="140" data-prefix="+" data-suffix="%">0%</div><div class="lbl" data-i18n="stats.lbl3">Avg. Sales Growth</div></div>
+  <div class="stat-item reveal"><div class="num count-up" data-target="12">0</div><div class="lbl" data-i18n="stats.lbl4">Industries Served</div></div>
+  <div class="stat-item reveal"><div class="num count-up" data-target="98" data-suffix="%">0%</div><div class="lbl" data-i18n="stats.lbl5">Client Satisfaction</div></div>
 </div>
 
 <!-- ── TEMPLATE SHOWCASE ── -->
 <section id="templates">
   <div class="center reveal">
-    <span class="section-tag">Template Showcase</span>
-    <h2 class="section-title">Bihar ke Har Business ke Liye Website</h2>
-    <p class="section-sub">Har template specifically aapke profession ke liye design kiya gaya hai — Patna aur Bihar ke local customers ko dhyan mein rakh ke.</p>
+    <span class="section-tag" data-i18n="tmpl.tag">Template Showcase</span>
+    <h2 class="section-title" data-i18n="tmpl.h2">Websites for Every Business in Bihar</h2>
+    <p class="section-sub" data-i18n="tmpl.sub">Every template is specifically designed for your profession — keeping Patna and Bihar's local customers in mind.</p>
   </div>
 
   <div class="tabs-wrap reveal">
-    <button class="tab-btn active" onclick="showTab('doctor',this)">🩺 Healthcare</button>
-    <button class="tab-btn" onclick="showTab('elec',this)">⚡ Electrician</button>
-    <button class="tab-btn" onclick="showTab('rest',this)">🍽 Restaurant</button>
-    <button class="tab-btn" onclick="showTab('retail',this)">🛍 Retail</button>
-    <button class="tab-btn" onclick="showTab('gym',this)">💪 Gym</button>
-    <button class="tab-btn" onclick="showTab('realty',this)">🏠 Real Estate</button>
-    <button class="tab-btn" onclick="showTab('salon',this)">💅 Salon</button>
-    <button class="tab-btn" onclick="showTab('law',this)">⚖ Law</button>
+    <button class="tab-btn active" onclick="showTab('doctor',this)" data-i18n="tab.healthcare">🩺 Healthcare</button>
+    <button class="tab-btn" onclick="showTab('elec',this)" data-i18n="tab.elec">⚡ Electrician</button>
+    <button class="tab-btn" onclick="showTab('rest',this)" data-i18n="tab.rest">🍽 Restaurant</button>
+    <button class="tab-btn" onclick="showTab('retail',this)" data-i18n="tab.retail">🛍 Retail</button>
+    <button class="tab-btn" onclick="showTab('gym',this)" data-i18n="tab.gym">💪 Gym</button>
+    <button class="tab-btn" onclick="showTab('realty',this)" data-i18n="tab.realty">🏠 Real Estate</button>
+    <button class="tab-btn" onclick="showTab('salon',this)" data-i18n="tab.salon">💅 Salon</button>
+    <button class="tab-btn" onclick="showTab('law',this)" data-i18n="tab.law">⚖ Law</button>
   </div>
 
   <!-- HEALTHCARE -->
@@ -159,16 +162,16 @@
     <div class="cat-layout">
       <div class="cat-info reveal-left">
         <div class="cat-icon" style="background:#eff6ff;">🩺</div>
-        <h3>Healthcare & Medical</h3>
-        <p>Patna ke doctors, clinics, aur hospitals ke liye professional websites. Patients online appointment book kar sakein, services dekh sakein, aur aapko 24/7 contact kar sakein.</p>
+        <h3 data-i18n="hc.h3">Healthcare & Medical</h3>
+        <p data-i18n="hc.p">Professional websites for Patna doctors, clinics, and hospitals. Patients can book appointments online, view services, and contact you 24/7.</p>
         <div class="results-grid stagger">
-          <div class="result-box"><div class="r-val">+183%</div><div class="r-lbl">Patient Bookings</div></div>
-          <div class="result-box blue"><div class="r-val">+240%</div><div class="r-lbl">Website Traffic</div></div>
-          <div class="result-box blue"><div class="r-val">+92%</div><div class="r-lbl">Naye Patients/Maah</div></div>
+          <div class="result-box"><div class="r-val">+183%</div><div class="r-lbl" data-i18n="res.bookings">Patient Bookings</div></div>
+          <div class="result-box blue"><div class="r-val">+240%</div><div class="r-lbl" data-i18n="res.traffic">Website Traffic</div></div>
+          <div class="result-box blue"><div class="r-val">+92%</div><div class="r-lbl" data-i18n="hc.r3">New Patients/Month</div></div>
           <div class="result-box"><div class="r-val">4.9★</div><div class="r-lbl">Google Rating</div></div>
         </div>
         <div class="cat-actions">
-          <a href="pages/book.html?category=healthcare&business=Healthcare+Clinic" class="template-link" onclick="requireBooking(event)">📅 Apne Clinic ke Liye Book Karein</a>
+          <a href="pages/book.html?category=healthcare&business=Healthcare+Clinic" class="template-link" onclick="requireBooking(event)" data-i18n="hc.book">📅 Book for Your Clinic</a>
           <a href="templates/healthcare.html" target="_blank" class="template-preview-link">👁 Full Preview</a>
         </div>
       </div>
@@ -191,16 +194,16 @@
     <div class="cat-layout">
       <div class="cat-info reveal-left">
         <div class="cat-icon" style="background:#fffbeb;">⚡</div>
-        <h3>Electricians & Tradespeople</h3>
-        <p>Bihar ke electricians, plumbers, AC technicians ke liye bold websites. Customers ek click mein quote maang sakein ya seedha call kar sakein.</p>
+        <h3 data-i18n="elec.h3">Electricians & Tradespeople</h3>
+        <p data-i18n="elec.p">Bold websites for Bihar electricians, plumbers, and AC technicians. Customers can request quotes or call you in one click.</p>
         <div class="results-grid stagger">
-          <div class="result-box"><div class="r-val">+210%</div><div class="r-lbl">Quote Requests</div></div>
-          <div class="result-box blue"><div class="r-val">+175%</div><div class="r-lbl">Website Traffic</div></div>
-          <div class="result-box blue"><div class="r-val">+88%</div><div class="r-lbl">Calls Per Month</div></div>
-          <div class="result-box"><div class="r-val">3.5×</div><div class="r-lbl">Revenue Growth</div></div>
+          <div class="result-box"><div class="r-val">+210%</div><div class="r-lbl" data-i18n="res.quotes">Quote Requests</div></div>
+          <div class="result-box blue"><div class="r-val">+175%</div><div class="r-lbl" data-i18n="res.traffic">Website Traffic</div></div>
+          <div class="result-box blue"><div class="r-val">+88%</div><div class="r-lbl" data-i18n="res.calls">Calls Per Month</div></div>
+          <div class="result-box"><div class="r-val">3.5×</div><div class="r-lbl" data-i18n="res.revenue">Revenue Growth</div></div>
         </div>
         <div class="cat-actions">
-          <a href="pages/book.html?category=electrician&business=Electrical+Services" class="template-link" onclick="requireBooking(event)">📅 Apne Business ke Liye Book Karein</a>
+          <a href="pages/book.html?category=electrician&business=Electrical+Services" class="template-link" onclick="requireBooking(event)" data-i18n="elec.book">📅 Book for Your Business</a>
           <a href="templates/electrician.html" target="_blank" class="template-preview-link">👁 Full Preview</a>
         </div>
       </div>
@@ -223,16 +226,16 @@
     <div class="cat-layout">
       <div class="cat-info reveal-left">
         <div class="cat-icon" style="background:#fff5f5;">🍽</div>
-        <h3>Restaurants & Dhaba</h3>
-        <p>Patna ke restaurants, dhabas, aur catering ke liye appetizing websites. Menu dikhao, reservations lo, aur online orders accept karo.</p>
+        <h3 data-i18n="rest.h3">Restaurants & Dhaba</h3>
+        <p data-i18n="rest.p">Appetising websites for Patna restaurants, dhabas, and catering businesses. Show your menu, take reservations, and accept online orders.</p>
         <div class="results-grid stagger">
-          <div class="result-box"><div class="r-val">+165%</div><div class="r-lbl">Online Orders</div></div>
-          <div class="result-box blue"><div class="r-val">+220%</div><div class="r-lbl">Table Reservations</div></div>
-          <div class="result-box blue"><div class="r-val">+95%</div><div class="r-lbl">Monthly Traffic</div></div>
-          <div class="result-box"><div class="r-val">+78%</div><div class="r-lbl">Revenue Growth</div></div>
+          <div class="result-box"><div class="r-val">+165%</div><div class="r-lbl" data-i18n="res.orders">Online Orders</div></div>
+          <div class="result-box blue"><div class="r-val">+220%</div><div class="r-lbl" data-i18n="res.reservations">Table Reservations</div></div>
+          <div class="result-box blue"><div class="r-val">+95%</div><div class="r-lbl" data-i18n="res.monthly">Monthly Traffic</div></div>
+          <div class="result-box"><div class="r-val">+78%</div><div class="r-lbl" data-i18n="res.revenue">Revenue Growth</div></div>
         </div>
         <div class="cat-actions">
-          <a href="pages/book.html?category=restaurant&business=Restaurant" class="template-link" onclick="requireBooking(event)">📅 Apne Restaurant ke Liye Book Karein</a>
+          <a href="pages/book.html?category=restaurant&business=Restaurant" class="template-link" onclick="requireBooking(event)" data-i18n="rest.book">📅 Book for Your Restaurant</a>
           <a href="templates/restaurant.html" target="_blank" class="template-preview-link">👁 Full Preview</a>
         </div>
       </div>
@@ -255,16 +258,16 @@
     <div class="cat-layout">
       <div class="cat-info reveal-left">
         <div class="cat-icon" style="background:#f5f3ff;">🛍</div>
-        <h3>Retail & E-commerce</h3>
-        <p>Patna ke shops, boutiques, aur retailers ke liye powerful online stores. Products dikhao, orders lo, aur Bihar bhar mein apna business faelao.</p>
+        <h3 data-i18n="ret.h3">Retail & E-commerce</h3>
+        <p data-i18n="ret.p">Powerful online stores for Patna shops and retailers. Display products, take orders, and grow your business across Bihar.</p>
         <div class="results-grid stagger">
-          <div class="result-box"><div class="r-val">+280%</div><div class="r-lbl">Online Sales</div></div>
-          <div class="result-box blue"><div class="r-val">+310%</div><div class="r-lbl">Product Views</div></div>
-          <div class="result-box blue"><div class="r-val">+145%</div><div class="r-lbl">Monthly Visitors</div></div>
-          <div class="result-box"><div class="r-val">4.2×</div><div class="r-lbl">Revenue Growth</div></div>
+          <div class="result-box"><div class="r-val">+280%</div><div class="r-lbl" data-i18n="res.sales">Online Sales</div></div>
+          <div class="result-box blue"><div class="r-val">+310%</div><div class="r-lbl" data-i18n="res.products">Product Views</div></div>
+          <div class="result-box blue"><div class="r-val">+145%</div><div class="r-lbl" data-i18n="res.visitors">Monthly Visitors</div></div>
+          <div class="result-box"><div class="r-val">4.2×</div><div class="r-lbl" data-i18n="res.revenue">Revenue Growth</div></div>
         </div>
         <div class="cat-actions">
-          <a href="pages/book.html?category=retail&business=Retail+Shop" class="template-link" onclick="requireBooking(event)">📅 Apne Shop ke Liye Book Karein</a>
+          <a href="pages/book.html?category=retail&business=Retail+Shop" class="template-link" onclick="requireBooking(event)" data-i18n="ret.book">📅 Book for Your Shop</a>
           <a href="templates/retail.html" target="_blank" class="template-preview-link">👁 Full Preview</a>
         </div>
       </div>
@@ -287,16 +290,16 @@
     <div class="cat-layout">
       <div class="cat-info reveal-left">
         <div class="cat-icon" style="background:#f0fdf4;">💪</div>
-        <h3>Gym & Fitness</h3>
-        <p>Patna ke gyms, yoga centers, aur fitness trainers ke liye high-energy websites. Classes dikhao, memberships lo, aur community online banao.</p>
+        <h3 data-i18n="gym.h3">Gym & Fitness</h3>
+        <p data-i18n="gym.p">High-energy websites for Patna gyms, yoga centres, and fitness trainers. Show classes, sell memberships, and build your community online.</p>
         <div class="results-grid stagger">
-          <div class="result-box"><div class="r-val">+200%</div><div class="r-lbl">Memberships</div></div>
-          <div class="result-box blue"><div class="r-val">+255%</div><div class="r-lbl">Class Sign-ups</div></div>
-          <div class="result-box blue"><div class="r-val">+130%</div><div class="r-lbl">Monthly Traffic</div></div>
-          <div class="result-box"><div class="r-val">3.8×</div><div class="r-lbl">Revenue Growth</div></div>
+          <div class="result-box"><div class="r-val">+200%</div><div class="r-lbl" data-i18n="res.memberships">Memberships</div></div>
+          <div class="result-box blue"><div class="r-val">+255%</div><div class="r-lbl" data-i18n="res.classes">Class Sign-ups</div></div>
+          <div class="result-box blue"><div class="r-val">+130%</div><div class="r-lbl" data-i18n="res.monthly">Monthly Traffic</div></div>
+          <div class="result-box"><div class="r-val">3.8×</div><div class="r-lbl" data-i18n="res.revenue">Revenue Growth</div></div>
         </div>
         <div class="cat-actions">
-          <a href="pages/book.html?category=gym&business=Fitness+Centre" class="template-link" onclick="requireBooking(event)">📅 Apne Gym ke Liye Book Karein</a>
+          <a href="pages/book.html?category=gym&business=Fitness+Centre" class="template-link" onclick="requireBooking(event)" data-i18n="gym.book">📅 Book for Your Gym</a>
           <a href="templates/gym.html" target="_blank" class="template-preview-link">👁 Full Preview</a>
         </div>
       </div>
@@ -319,16 +322,16 @@
     <div class="cat-layout">
       <div class="cat-info reveal-left">
         <div class="cat-icon" style="background:#ecfdf5;">🏠</div>
-        <h3>Real Estate</h3>
-        <p>Bihar ke property dealers, agents, aur builders ke liye professional websites. Listings dikhao, buyers capture karo, aur viewings book karo.</p>
+        <h3 data-i18n="re.h3">Real Estate</h3>
+        <p data-i18n="re.p">Professional websites for Bihar property dealers, agents, and builders. Showcase listings, capture buyers, and book viewings.</p>
         <div class="results-grid stagger">
-          <div class="result-box"><div class="r-val">+190%</div><div class="r-lbl">Enquiries</div></div>
-          <div class="result-box blue"><div class="r-val">+270%</div><div class="r-lbl">Listing Views</div></div>
-          <div class="result-box blue"><div class="r-val">+115%</div><div class="r-lbl">Monthly Traffic</div></div>
-          <div class="result-box"><div class="r-val">+65%</div><div class="r-lbl">Properties Sold</div></div>
+          <div class="result-box"><div class="r-val">+190%</div><div class="r-lbl" data-i18n="res.enquiries">Enquiries</div></div>
+          <div class="result-box blue"><div class="r-val">+270%</div><div class="r-lbl" data-i18n="res.listings">Listing Views</div></div>
+          <div class="result-box blue"><div class="r-val">+115%</div><div class="r-lbl" data-i18n="res.monthly">Monthly Traffic</div></div>
+          <div class="result-box"><div class="r-val">+65%</div><div class="r-lbl" data-i18n="res.properties">Properties Sold</div></div>
         </div>
         <div class="cat-actions">
-          <a href="pages/book.html?category=realestate&business=Property+Agency" class="template-link" onclick="requireBooking(event)">📅 Apne Agency ke Liye Book Karein</a>
+          <a href="pages/book.html?category=realestate&business=Property+Agency" class="template-link" onclick="requireBooking(event)" data-i18n="re.book">📅 Book for Your Agency</a>
           <a href="templates/realestate.html" target="_blank" class="template-preview-link">👁 Full Preview</a>
         </div>
       </div>
@@ -351,16 +354,16 @@
     <div class="cat-layout">
       <div class="cat-info reveal-left">
         <div class="cat-icon" style="background:#fff0f6;">💅</div>
-        <h3>Salon & Beauty Parlour</h3>
-        <p>Patna ke salons, beauty parlours, aur spas ke liye elegant websites. Portfolio dikhao, appointments lo, aur online booking se 24/7 customers aao.</p>
+        <h3 data-i18n="sal.h3">Salon & Beauty Parlour</h3>
+        <p data-i18n="sal.p">Elegant websites for Patna salons, beauty parlours, and spas. Show your portfolio, take appointments, and attract customers 24/7.</p>
         <div class="results-grid stagger">
-          <div class="result-box"><div class="r-val">+175%</div><div class="r-lbl">Appointments</div></div>
-          <div class="result-box blue"><div class="r-val">+230%</div><div class="r-lbl">Portfolio Views</div></div>
-          <div class="result-box blue"><div class="r-val">+120%</div><div class="r-lbl">Monthly Traffic</div></div>
-          <div class="result-box"><div class="r-val">+90%</div><div class="r-lbl">Revenue Growth</div></div>
+          <div class="result-box"><div class="r-val">+175%</div><div class="r-lbl" data-i18n="res.appts">Appointments</div></div>
+          <div class="result-box blue"><div class="r-val">+230%</div><div class="r-lbl" data-i18n="res.portfolio">Portfolio Views</div></div>
+          <div class="result-box blue"><div class="r-val">+120%</div><div class="r-lbl" data-i18n="res.monthly">Monthly Traffic</div></div>
+          <div class="result-box"><div class="r-val">+90%</div><div class="r-lbl" data-i18n="res.revenue">Revenue Growth</div></div>
         </div>
         <div class="cat-actions">
-          <a href="pages/book.html?category=salon&business=Salon+Beauty" class="template-link" onclick="requireBooking(event)">📅 Apne Salon ke Liye Book Karein</a>
+          <a href="pages/book.html?category=salon&business=Salon+Beauty" class="template-link" onclick="requireBooking(event)" data-i18n="sal.book">📅 Book for Your Salon</a>
           <a href="templates/salon.html" target="_blank" class="template-preview-link">👁 Full Preview</a>
         </div>
       </div>
@@ -383,16 +386,16 @@
     <div class="cat-layout">
       <div class="cat-info reveal-left">
         <div class="cat-icon" style="background:#fafaf9;">⚖</div>
-        <h3>Law Firms & Advocates</h3>
-        <p>Patna High Court ke advocates aur law firms ke liye authoritative websites. Expertise dikhao, clients capture karo, aur free consultation offer karo.</p>
+        <h3 data-i18n="law.h3">Law Firms & Advocates</h3>
+        <p data-i18n="law.p">Authoritative websites for Patna High Court advocates and law firms. Showcase expertise, capture clients, and offer free consultations.</p>
         <div class="results-grid stagger">
-          <div class="result-box"><div class="r-val">+160%</div><div class="r-lbl">Consultations</div></div>
-          <div class="result-box blue"><div class="r-val">+195%</div><div class="r-lbl">Case Enquiries</div></div>
-          <div class="result-box blue"><div class="r-val">+140%</div><div class="r-lbl">Monthly Traffic</div></div>
-          <div class="result-box"><div class="r-val">2.9×</div><div class="r-lbl">Client Growth</div></div>
+          <div class="result-box"><div class="r-val">+160%</div><div class="r-lbl" data-i18n="res.consult">Consultations</div></div>
+          <div class="result-box blue"><div class="r-val">+195%</div><div class="r-lbl" data-i18n="res.cases">Case Enquiries</div></div>
+          <div class="result-box blue"><div class="r-val">+140%</div><div class="r-lbl" data-i18n="res.monthly">Monthly Traffic</div></div>
+          <div class="result-box"><div class="r-val">2.9×</div><div class="r-lbl" data-i18n="res.clients">Client Growth</div></div>
         </div>
         <div class="cat-actions">
-          <a href="pages/book.html?category=law&business=Law+Firm" class="template-link" onclick="requireBooking(event)">📅 Apne Firm ke Liye Book Karein</a>
+          <a href="pages/book.html?category=law&business=Law+Firm" class="template-link" onclick="requireBooking(event)" data-i18n="law.book">📅 Book for Your Firm</a>
           <a href="templates/law.html" target="_blank" class="template-preview-link">👁 Full Preview</a>
         </div>
       </div>
@@ -414,30 +417,30 @@
 <!-- ── HOW IT WORKS ── -->
 <section class="how-section" id="how">
   <div class="center reveal">
-    <span class="section-tag" style="background:rgba(255,255,255,.18);color:#ffffff;">Hamara Process</span>
-    <h2 class="section-title">Idea Se Live Website — Sirf Kuch Dino Mein</h2>
-    <p class="section-sub">Hamne apna process simple aur stress-free banaya hai.</p>
+    <span class="section-tag" style="background:rgba(255,255,255,.18);color:#ffffff;" data-i18n="how.tag">Our Process</span>
+    <h2 class="section-title" data-i18n="how.h2">From Idea to Live Website — In Just a Few Days</h2>
+    <p class="section-sub" data-i18n="how.sub">We have made our process simple and stress-free.</p>
   </div>
   <div class="steps stagger reveal">
     <div class="step">
       <div class="step-num">1</div>
-      <h4>Free Consultation</h4>
-      <p>Aapke goals aur vision ke baare mein baat karte hain. Koi pressure nahi, koi jargon nahi.</p>
+      <h4 data-i18n="step1.h4">Free Consultation</h4>
+      <p data-i18n="step1.p">We talk about your goals and vision. No pressure, no jargon.</p>
     </div>
     <div class="step">
       <div class="step-num">2</div>
-      <h4>Custom Design</h4>
-      <p>Aapke brand aur industry ke liye tailored mockup ready karte hain.</p>
+      <h4 data-i18n="step2.h4">Custom Design</h4>
+      <p data-i18n="step2.p">We prepare a tailored mockup for your brand and industry.</p>
     </div>
     <div class="step">
       <div class="step-num">3</div>
-      <h4>Build & Revise</h4>
-      <p>Website banate hain, aur aapka feedback leke unlimited revisions karte hain.</p>
+      <h4 data-i18n="step3.h4">Build & Revise</h4>
+      <p data-i18n="step3.p">We build the website and do unlimited revisions based on your feedback.</p>
     </div>
     <div class="step">
       <div class="step-num">4</div>
-      <h4>Launch & Grow</h4>
-      <p>Live karte hain, technical setup karte hain, aur ongoing support dete hain.</p>
+      <h4 data-i18n="step4.h4">Launch & Grow</h4>
+      <p data-i18n="step4.p">We go live, handle the technical setup, and provide ongoing support.</p>
     </div>
   </div>
 </section>
@@ -445,74 +448,74 @@
 <!-- ── TESTIMONIALS ── -->
 <section id="testimonials" style="background:var(--light-bg);">
   <div class="center reveal">
-    <span class="section-tag">Client Results</span>
-    <h2 class="section-title">Bihar ke Businesses — Real Growth</h2>
-    <p class="section-sub">Humara kaam bolega. Yeh hain hamare Bihar ke clients ki kahani.</p>
+    <span class="section-tag" data-i18n="test.tag">Client Results</span>
+    <h2 class="section-title" data-i18n="test.h2">Bihar Businesses — Real Growth</h2>
+    <p class="section-sub" data-i18n="test.sub">Our work speaks for itself. Here are stories from our Bihar clients.</p>
   </div>
   <div class="testimonials-grid stagger reveal">
     <div class="tcard">
       <div class="stars">★★★★★</div>
-      <p>"Website launch hone ke 3 mahine mein patient bookings double ho gayin. MGlobal ne samjha ki ek medical practice ke liye kya zaroori hai — clean, professional, aur trustworthy."</p>
+      <p data-i18n="test.1.quote">"Within 3 months of the website launch, patient bookings doubled. MGlobal understood exactly what a medical practice needs — clean, professional, and trustworthy."</p>
       <div class="author">
         <div class="avatar" style="background:#1a73e8;">RK</div>
         <div class="author-info">
           <div class="name">Dr. Ramesh Kumar</div>
-          <div class="role">City Medical Clinic · Boring Road, Patna</div>
+          <div class="role" data-i18n="test.1.role">City Medical Clinic · Boring Road, Patna</div>
         </div>
       </div>
     </div>
     <div class="tcard">
       <div class="stars">★★★★★</div>
-      <p>"Pehle sirf munh-zubaani kaam aata tha. Ab website se 10–15 quote requests har hafte aate hain. MGlobal mein invest karna sabse accha faisla tha."</p>
+      <p data-i18n="test.2.quote">"Before, I only got work by word of mouth. Now I get 10–15 quote requests every week from the website. Investing in MGlobal was the best decision I made."</p>
       <div class="author">
         <div class="avatar" style="background:#f59e0b;">RS</div>
         <div class="author-info">
           <div class="name">Ravi Shankar</div>
-          <div class="role">Ravi Electricals · Kankarbagh, Patna</div>
+          <div class="role" data-i18n="test.2.role">Ravi Electricals · Kankarbagh, Patna</div>
         </div>
       </div>
     </div>
     <div class="tcard">
       <div class="stars">★★★★★</div>
-      <p>"Online orders 2 mahine mein 165% badh gaye. MGlobal ne poora process seamless bana diya — design se le ke live hone tak ek hafte mein."</p>
+      <p data-i18n="test.3.quote">"Online orders grew 165% in just two months. MGlobal made the whole process seamless — from design to going live in one week."</p>
       <div class="author">
         <div class="avatar" style="background:#dc2626;">MP</div>
         <div class="author-info">
           <div class="name">Mithilesh Prasad</div>
-          <div class="role">Patna Rasoi · Bailey Road, Patna</div>
+          <div class="role" data-i18n="test.3.role">Patna Rasoi · Bailey Road, Patna</div>
         </div>
       </div>
     </div>
     <div class="tcard">
       <div class="stars">★★★★★</div>
-      <p>"Hamari dukaan ka online presence finally waise dikh raha hai jaisa hum chahte the. Website se ab 40% revenue aata hai. Incredible kaam kiya MGlobal ne."</p>
+      <p data-i18n="test.4.quote">"Our shop's online presence finally looks the way we always wanted. 40% of our revenue now comes through the website. Incredible work by MGlobal."</p>
       <div class="author">
         <div class="avatar" style="background:#7c3aed;">SK</div>
         <div class="author-info">
           <div class="name">Sunita Kumari</div>
-          <div class="role">Maurya Emporium · Patna City</div>
+          <div class="role" data-i18n="test.4.role">Maurya Emporium · Patna City</div>
         </div>
       </div>
     </div>
     <div class="tcard">
       <div class="stars">★★★★★</div>
-      <p>"Gym memberships 200% badh gayin website launch ke baad. Online booking system ne hamare ghanton ki admin work bhi bachai. Bahut khush hain."</p>
+      <p data-i18n="test.5.quote">"Gym memberships grew 200% after the website launched. The online booking system also saved us hours of admin work every day. Very happy."</p>
       <div class="author">
         <div class="avatar" style="background:#16a34a;">AS</div>
         <div class="author-info">
           <div class="name">Ajay Singh</div>
-          <div class="role">Chandragupta Fitness · Fraser Road, Patna</div>
+          <div class="role" data-i18n="test.5.role">Chandragupta Fitness · Fraser Road, Patna</div>
         </div>
       </div>
     </div>
     <div class="tcard">
       <div class="stars">★★★★★</div>
-      <p>"Pehle teenmahine mein consultation requests 160% badh gayin. MGlobal ne aisi website banayi jo authority aur trust communicate kare — bilkul waisa jo ek law firm chahta hai."</p>
+      <p data-i18n="test.6.quote">"Consultation requests grew 160% in the first three months. MGlobal built a website that communicates authority and trust — exactly what a law firm needs."</p>
       <div class="author">
         <div class="avatar" style="background:#44403c;">VS</div>
         <div class="author-info">
           <div class="name">Adv. Vikram Sharma</div>
-          <div class="role">Sharma & Associates · Patna High Court</div>
+          <div class="role" data-i18n="test.6.role">Sharma & Associates · Patna High Court</div>
         </div>
       </div>
     </div>
@@ -522,15 +525,15 @@
 <!-- ── CTA ── -->
 <section class="cta-section" id="contact">
   <div class="reveal">
-    <span class="section-tag" style="background:rgba(255,255,255,.2);color:#ffffff;">Free Consultation</span>
-    <h2>Apna Business Online Laane ke Liye Ready Hain?</h2>
-    <p>Free consultation book karein — koi commitment nahi, koi payment nahi. Sirf ek friendly conversation.</p>
+    <span class="section-tag" style="background:rgba(255,255,255,.2);color:#ffffff;" data-i18n="cta.tag">Free Consultation</span>
+    <h2 data-i18n="cta.h2">Ready to Bring Your Business Online?</h2>
+    <p data-i18n="cta.p">Book a free consultation — no commitment, no payment. Just a friendly conversation.</p>
     <div style="margin-top:8px;">
-      <a href="pages/book.html" class="btn btn-white" style="font-size:1rem;padding:15px 32px;">
-        📅 Free Consultation Book Karein
+      <a href="pages/book.html" class="btn btn-white" style="font-size:1rem;padding:15px 32px;" data-i18n="cta.btn">
+        📅 Book Free Consultation
       </a>
     </div>
-    <p class="cta-note" style="margin-top:20px;">Ya seedha call karein: <strong style="color:white;">+91 0612-XXX-XXXX</strong> · Patna, Bihar</p>
+    <p class="cta-note" style="margin-top:20px;"><span data-i18n="cta.note">Or call us directly:</span> <strong style="color:white;">+91 0612-XXX-XXXX</strong> · Patna, Bihar</p>
   </div>
 </section>
 
@@ -539,10 +542,10 @@
   <div class="footer-grid">
     <div class="footer-brand">
       <a class="logo" href="index.html">M<span style="color:#94a3b8;">Global</span></a>
-      <p>Bihar ka professional web development agency. Hum banate hain websites jo kaam karti hain — Patna se poore Bihar tak.</p>
+      <p data-i18n="footer.brand.p">Bihar's professional web development agency. We build websites that work — from Patna to all of Bihar.</p>
     </div>
     <div class="footer-col">
-      <h5>Industries</h5>
+      <h5 data-i18n="footer.industries">Industries</h5>
       <ul>
         <li><a href="templates/healthcare.html" target="_blank">🩺 Healthcare</a></li>
         <li><a href="templates/electrician.html" target="_blank">⚡ Electricians</a></li>
@@ -553,22 +556,22 @@
       </ul>
     </div>
     <div class="footer-col">
-      <h5>Quick Links</h5>
+      <h5 data-i18n="footer.quicklinks">Quick Links</h5>
       <ul>
-        <li><a href="#templates">Templates</a></li>
-        <li><a href="#how">Our Process</a></li>
-        <li><a href="#testimonials">Results</a></li>
-        <li><a href="pages/book.html">Book Consultation</a></li>
-        <li><a href="pages/dashboard.html">My Appointments</a></li>
+        <li><a href="#templates" data-i18n="footer.lnk.templates">Templates</a></li>
+        <li><a href="#how" data-i18n="footer.lnk.process">Our Process</a></li>
+        <li><a href="#testimonials" data-i18n="footer.lnk.results">Results</a></li>
+        <li><a href="pages/book.html" data-i18n="footer.lnk.book">Book Consultation</a></li>
+        <li><a href="pages/dashboard.html" data-i18n="footer.lnk.appts">My Appointments</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h5>Contact</h5>
+      <h5 data-i18n="footer.contact">Contact</h5>
       <ul>
         <li><a href="#">📧 hello@mglobal.in</a></li>
         <li><a href="#">📞 +91 0612-XXX-XXXX</a></li>
         <li><a href="#">📍 Patna, Bihar — 800001</a></li>
-        <li><a href="pages/book.html">Free Consultation</a></li>
+        <li><a href="pages/book.html" data-i18n="footer.lnk.book">Free Consultation</a></li>
       </ul>
     </div>
   </div>
@@ -587,6 +590,7 @@
 <script src="js/firebase-config.js"></script>
 <script src="js/auth.js"></script>
 <script src="js/animations.js"></script>
+<script src="js/i18n.js"></script>
 
 <script>
   function showTab(id, btn) {
